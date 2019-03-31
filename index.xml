@@ -84,7 +84,7 @@ thorough, I had a harder time navigating the website than I expected.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;So, if I want to analyze, let&amp;rsquo;s say, subject bert&amp;rsquo;s images, I just open my &lt;code&gt;freeview.sh&lt;/code&gt;
- script with a text editor and change &lt;code&gt;&#39;&amp;lt;subject name&amp;gt;&#39;&lt;/code&gt; to &lt;code&gt;bert&lt;/code&gt; (which is this
+ script with a text editor and change &lt;code&gt;&amp;lt;subject name&amp;gt;&lt;/code&gt; to &lt;code&gt;bert&lt;/code&gt; (which is this
  subject&amp;rsquo;s folder name).
  Then, I can open a terminal, navigate to my &lt;code&gt;subjects/&lt;/code&gt; folder and type:&lt;/p&gt;
 
@@ -110,12 +110,12 @@ found by experimenting are:&lt;/p&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;Alt + N&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Navigate Tool&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;img src=&#34;navigate.png&#34; style=&#34;float: left; margin-right: 10px;&#34;/&gt; Navigate Tool&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
 &lt;td&gt;Ctrl + E&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Recon Edit Tool&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;img src=&#34;recon_edit.png&#34; style=&#34;float: left; margin-right: 10px;&#34;/&gt; Recon Edit Tool&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
