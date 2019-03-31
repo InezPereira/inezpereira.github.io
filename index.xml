@@ -17,9 +17,11 @@
       <guid>inezpereira.github.io/post/freeview/</guid>
       <description>
 
-&lt;p&gt;As documented on the main webpage, FreeSurfer is an open source software package for the analysis and visualization of structural and functional neuroimaging data. It is developed by the Laboratory for Computational Neuroimaging at the Athinoula A. Martinos Center for Biomedical Imaging.&lt;/p&gt;
+&lt;p&gt;FreeSurfer is an open source software package for the analysis and visualization of structural and functional neuroimaging data. It is developed by the Laboratory for Computational Neuroimaging at the Athinoula A. Martinos Center for Biomedical Imaging.
+It&amp;rsquo;s a really useful tool that allow for automated processes with a hint of manual intervention,
+mainly through it&amp;rsquo;s GUI, Freeview.&lt;/p&gt;
 
-&lt;p&gt;I have started using FreeSurfer and Freeview  last year and, albeit the documentation being quite
+&lt;p&gt;I started using FreeSurfer and Freeview  last year and, albeit the documentation being quite
 thorough, I had a harder time navigating the website than I expected.&lt;/p&gt;
 
 &lt;p&gt;So here are a few tricks to make your handling FreeSurfer&amp;rsquo;s GUI, Freeview, easier
