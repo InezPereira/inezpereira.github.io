@@ -6,7 +6,237 @@
     <description>Recent content in Purkinje Madness on Purkinje Madness</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 31 Mar 2019 11:17:49 +0200</lastBuildDate>
     <atom:link href="inezpereira.github.io/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Freeview from FreeSurfer</title>
+      <link>inezpereira.github.io/post/freeview/</link>
+      <pubDate>Sun, 31 Mar 2019 11:17:49 +0200</pubDate>
+      
+      <guid>inezpereira.github.io/post/freeview/</guid>
+      <description>
+
+&lt;p&gt;As documented on the main webpage, FreeSurfer is an open source software package for the analysis and visualization of structural and functional neuroimaging data. It is developed by the Laboratory for Computational Neuroimaging at the Athinoula A. Martinos Center for Biomedical Imaging.&lt;/p&gt;
+
+&lt;p&gt;I have started using FreeSurfer and Freeview  last year and, albeit the documentation being quite
+thorough, I had a harder time navigating the website than I expected.&lt;/p&gt;
+
+&lt;p&gt;So here are a few tricks to make your handling FreeSurfer&amp;rsquo;s GUI, Freeview, easier
+ and faster!&lt;/p&gt;
+
+&lt;h2 id=&#34;1-starting-freeview&#34;&gt;1. Starting Freeview&lt;/h2&gt;
+
+&lt;p&gt;You can start freeview by just typing &lt;code&gt;freeview&lt;/code&gt; in your command line and then
+ opening the files you want. Of course, you will be far better off if you write
+ a small script with your usual calls.&lt;/p&gt;
+
+&lt;p&gt;The command options available for Freeview are:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Argument&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Action&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-v&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;load a volume file&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-l&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;load a a label file&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-dti&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;load one or more dti volumes&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-f&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;load a surface&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;-w&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;load waypoints&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;I have the following script saved under my &lt;code&gt;subjects/&lt;/code&gt; folder:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; export SUBJECT=&#39;&amp;lt;subject name&amp;gt;&#39;
+ freeview -v \
+     $SUBJECT/mri/T1.mgz \
+     $SUBJECT/mri/wm.mgz \
+     $SUBJECT/mri/brainmask.mgz \
+     -f \
+     $SUBJECT/surf/lh.white:edgecolor=blue \
+     $SUBJECT/surf/lh.pial:edgecolor=yellow \
+     $SUBJECT/surf/rh.white:edgecolor=blue \
+     $SUBJECT/surf/rh.pial:edgecolor=yellow
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So, if I want to analyze, let&amp;rsquo;s say, subject bert&amp;rsquo;s images, I just open my &lt;code&gt;freeview.sh&lt;/code&gt;
+ script with a text editor and change &lt;code&gt;&#39;&amp;lt;subject name&amp;gt;&#39;&lt;/code&gt; to &lt;code&gt;bert&lt;/code&gt; (which is this
+ subject&amp;rsquo;s folder name).
+ Then, I can open a terminal, navigate to my &lt;code&gt;subjects/&lt;/code&gt; folder and type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; ./freeview.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All right, we have opened Freeview and we&amp;rsquo;re ready to start interacting with the GUI!&lt;/p&gt;
+
+&lt;h2 id=&#34;2-check-out-the-available-freeview-keyboard-shortcuts&#34;&gt;2. Check out the available Freeview keyboard shortcuts!&lt;/h2&gt;
+
+&lt;p&gt;This single trick will save you an amazing amount of time. I have been working with
+CentOs and a few shortcuts I have
+found by experimenting are:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Command&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Action&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Alt + N&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Navigate Tool&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Ctrl + E&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Recon Edit Tool&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Ctrl + F&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Toggle all surfaces&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Alt + C&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Alternate between volumes&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Ctrl + P&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Toggle left side menu&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Ctrl + T&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Point set edit&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;You&amp;rsquo;ll find other shortcuts under &lt;a href=&#34;https://surfer.nmr.mgh.harvard.edu/fswiki/FreeviewGuide/FreeviewReference/FreeviewKeyboardShortcuts&#34; target=&#34;_blank&#34;&gt;this link&lt;/a&gt;. I&amp;rsquo;ll copy the most useful ones here for convenience:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Command&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Action&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Ctrl + S&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Save&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Ctrl + Z&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Undo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Ctrl + Q&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Exit Freeview&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Ctrl + O&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Load Volume&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Up/Down Arrow Keys or PageUp/PageDown&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Change slice&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Scroll or Drag-Right-Click&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Zoom In/Zoom Out&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Ctrl + Up/Down/Left/Right (arrow keys)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Moving volume (Panning)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Alt + V&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Toggle currently highlighted volume&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Shift-Drag Left Click&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Adjust Contrast/Brightness&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Zoom in at current location&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Ctrl-Left-Click (or scroll)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Zoom out at current location&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Ctrl-Right-Click (or scroll)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;When you&amp;rsquo;re in Voxel/Recon/ROI edit mode:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Command&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Action&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Draw / Fill&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Left Click&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Erase / Erase Fill&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Shift+Left Click&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;That conludes this short tutorial about Freeview!
+If you want to read/know more, the full Freeview Guide can be found &lt;a href=&#34;https://surfer.nmr.mgh.harvard.edu/fswiki/FreeviewGuide&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;!-- https://discourse.gohugo.io/t/linking-to-static-files-with-hugo/8282 --&gt;&lt;/p&gt;
+</description>
+    </item>
     
   </channel>
 </rss>

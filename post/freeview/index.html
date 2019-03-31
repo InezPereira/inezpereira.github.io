@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.1.0">
+  <meta name="generator" content="Hugo 0.54.0" />
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Inês Pereira">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="As documented on the main webpage, FreeSurfer is an open source software package for the analysis and visualization of structural and functional neuroimaging data. It is developed by the Laboratory for Computational Neuroimaging at the Athinoula A. Martinos Center for Biomedical Imaging.
+I have started using FreeSurfer and Freeview last year and, albeit the documentation being quite thorough, I had a harder time navigating the website than I expected.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="inezpereira.github.io/post/freeview/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="hsl(339, 90%, 68%)">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" disabled>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark">
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono">
+  
+
+  <link rel="stylesheet" href="/inezpereira.github.io/styles.css">
+  
+
+  
+  
+  
+
+  
+  <link rel="alternate" href="inezpereira.github.io/index.xml" type="application/rss+xml" title="Purkinje Madness">
+  <link rel="feed" href="inezpereira.github.io/index.xml" type="application/rss+xml" title="Purkinje Madness">
+  
+
+  <link rel="manifest" href="/inezpereira.github.io/site.webmanifest">
+  <link rel="icon" type="image/png" href="/inezpereira.github.io/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/inezpereira.github.io/img/icon-192.png">
+
+  <link rel="canonical" href="inezpereira.github.io/post/freeview/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Purkinje Madness">
+  <meta property="og:url" content="inezpereira.github.io/post/freeview/">
+  <meta property="og:title" content="Freeview from FreeSurfer | Purkinje Madness">
+  <meta property="og:description" content="As documented on the main webpage, FreeSurfer is an open source software package for the analysis and visualization of structural and functional neuroimaging data. It is developed by the Laboratory for Computational Neuroimaging at the Athinoula A. Martinos Center for Biomedical Imaging.
+I have started using FreeSurfer and Freeview last year and, albeit the documentation being quite thorough, I had a harder time navigating the website than I expected."><meta property="og:image" content="/inezpereira.github.io/post/freeview/featured.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-03-31T11:17:49&#43;02:00">
+  
+  <meta property="article:modified_time" content="2019-03-31T11:17:49&#43;02:00">
+  
+
+  
+
+  
+
+  <title>Freeview from FreeSurfer | Purkinje Madness</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/inezpereira.github.io/">Purkinje Madness</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/inezpereira.github.io/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/inezpereira.github.io/#posts">
+            
+            <span>Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/inezpereira.github.io/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/inezpereira.github.io/#featured">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/inezpereira.github.io/tutorial/">
+            
+            <span>Tutorials</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/inezpereira.github.io/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-header d-xl-none">
+  <div class="featured-image" style="background-image: url('/inezpereira.github.io/post/freeview/featured_hu14ff51c5c3fde57fbe423481de8a5d11_246250_800x0_resize_lanczos_2.png');"></div>
+  
+</div>
+
+
+<div class="container-fluid split-header d-none d-xl-block">
+  <div class="row">
+    <div class="col-6">
+      <div class="split-header-content">
+        <h1 itemprop="name">Freeview from FreeSurfer</h1>
+
+        
+
+        
+
+
+
+<meta content="2019-03-31 11:17:49 &#43;0200 CEST" itemprop="datePublished">
+<meta content="2019-03-31 11:17:49 &#43;0200 CEST" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Mar 31, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    3 min read
+  </span>
+  
+
+  
+  
+
+  
+
+  
+
+</div>
+
+
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+        
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Freeview%20from%20FreeSurfer&amp;url=inezpereira.github.io%2fpost%2ffreeview%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=inezpereira.github.io%2fpost%2ffreeview%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=inezpereira.github.io%2fpost%2ffreeview%2f&amp;title=Freeview%20from%20FreeSurfer"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=inezpereira.github.io%2fpost%2ffreeview%2f&amp;title=Freeview%20from%20FreeSurfer"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Freeview%20from%20FreeSurfer&amp;body=inezpereira.github.io%2fpost%2ffreeview%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="split-header-image">
+        <img src="/inezpereira.github.io/post/freeview/featured_hu14ff51c5c3fde57fbe423481de8a5d11_246250_680x500_fill_q90_lanczos_smart1_2.png" itemprop="image" alt="">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-container d-xl-none">
+  <h1 itemprop="name">Freeview from FreeSurfer</h1>
+
+  
+
+  
+
+
+
+<meta content="2019-03-31 11:17:49 &#43;0200 CEST" itemprop="datePublished">
+<meta content="2019-03-31 11:17:49 &#43;0200 CEST" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Mar 31, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    3 min read
+  </span>
+  
+
+  
+  
+
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Freeview%20from%20FreeSurfer&amp;url=inezpereira.github.io%2fpost%2ffreeview%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=inezpereira.github.io%2fpost%2ffreeview%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=inezpereira.github.io%2fpost%2ffreeview%2f&amp;title=Freeview%20from%20FreeSurfer"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=inezpereira.github.io%2fpost%2ffreeview%2f&amp;title=Freeview%20from%20FreeSurfer"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Freeview%20from%20FreeSurfer&amp;body=inezpereira.github.io%2fpost%2ffreeview%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p>As documented on the main webpage, FreeSurfer is an open source software package for the analysis and visualization of structural and functional neuroimaging data. It is developed by the Laboratory for Computational Neuroimaging at the Athinoula A. Martinos Center for Biomedical Imaging.</p>
+
+<p>I have started using FreeSurfer and Freeview  last year and, albeit the documentation being quite
+thorough, I had a harder time navigating the website than I expected.</p>
+
+<p>So here are a few tricks to make your handling FreeSurfer&rsquo;s GUI, Freeview, easier
+ and faster!</p>
+
+<h2 id="1-starting-freeview">1. Starting Freeview</h2>
+
+<p>You can start freeview by just typing <code>freeview</code> in your command line and then
+ opening the files you want. Of course, you will be far better off if you write
+ a small script with your usual calls.</p>
+
+<p>The command options available for Freeview are:</p>
+
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th align="left">Action</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>-v</td>
+<td align="left">load a volume file</td>
+</tr>
+
+<tr>
+<td>-l</td>
+<td align="left">load a a label file</td>
+</tr>
+
+<tr>
+<td>-dti</td>
+<td align="left">load one or more dti volumes</td>
+</tr>
+
+<tr>
+<td>-f</td>
+<td align="left">load a surface</td>
+</tr>
+
+<tr>
+<td>-w</td>
+<td align="left">load waypoints</td>
+</tr>
+</tbody>
+</table>
+
+<p>I have the following script saved under my <code>subjects/</code> folder:</p>
+
+<pre><code> export SUBJECT='&lt;subject name&gt;'
+ freeview -v \
+     $SUBJECT/mri/T1.mgz \
+     $SUBJECT/mri/wm.mgz \
+     $SUBJECT/mri/brainmask.mgz \
+     -f \
+     $SUBJECT/surf/lh.white:edgecolor=blue \
+     $SUBJECT/surf/lh.pial:edgecolor=yellow \
+     $SUBJECT/surf/rh.white:edgecolor=blue \
+     $SUBJECT/surf/rh.pial:edgecolor=yellow
+</code></pre>
+
+<p>So, if I want to analyze, let&rsquo;s say, subject bert&rsquo;s images, I just open my <code>freeview.sh</code>
+ script with a text editor and change <code>'&lt;subject name&gt;'</code> to <code>bert</code> (which is this
+ subject&rsquo;s folder name).
+ Then, I can open a terminal, navigate to my <code>subjects/</code> folder and type:</p>
+
+<pre><code> ./freeview.sh
+</code></pre>
+
+<p>All right, we have opened Freeview and we&rsquo;re ready to start interacting with the GUI!</p>
+
+<h2 id="2-check-out-the-available-freeview-keyboard-shortcuts">2. Check out the available Freeview keyboard shortcuts!</h2>
+
+<p>This single trick will save you an amazing amount of time. I have been working with
+CentOs and a few shortcuts I have
+found by experimenting are:</p>
+
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th align="left">Action</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Alt + N</td>
+<td align="left">Navigate Tool</td>
+</tr>
+
+<tr>
+<td>Ctrl + E</td>
+<td align="left">Recon Edit Tool</td>
+</tr>
+
+<tr>
+<td>Ctrl + F</td>
+<td align="left">Toggle all surfaces</td>
+</tr>
+
+<tr>
+<td>Alt + C</td>
+<td align="left">Alternate between volumes</td>
+</tr>
+
+<tr>
+<td>Ctrl + P</td>
+<td align="left">Toggle left side menu</td>
+</tr>
+
+<tr>
+<td>Ctrl + T</td>
+<td align="left">Point set edit</td>
+</tr>
+</tbody>
+</table>
+
+<p>You&rsquo;ll find other shortcuts under <a href="https://surfer.nmr.mgh.harvard.edu/fswiki/FreeviewGuide/FreeviewReference/FreeviewKeyboardShortcuts" target="_blank">this link</a>. I&rsquo;ll copy the most useful ones here for convenience:</p>
+
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th align="left">Action</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Ctrl + S</td>
+<td align="left">Save</td>
+</tr>
+
+<tr>
+<td>Ctrl + Z</td>
+<td align="left">Undo</td>
+</tr>
+
+<tr>
+<td>Ctrl + Q</td>
+<td align="left">Exit Freeview</td>
+</tr>
+
+<tr>
+<td>Ctrl + O</td>
+<td align="left">Load Volume</td>
+</tr>
+
+<tr>
+<td>Up/Down Arrow Keys or PageUp/PageDown</td>
+<td align="left">Change slice</td>
+</tr>
+
+<tr>
+<td>Scroll or Drag-Right-Click</td>
+<td align="left">Zoom In/Zoom Out</td>
+</tr>
+
+<tr>
+<td>Ctrl + Up/Down/Left/Right (arrow keys)</td>
+<td align="left">Moving volume (Panning)</td>
+</tr>
+
+<tr>
+<td>Alt + V</td>
+<td align="left">Toggle currently highlighted volume</td>
+</tr>
+
+<tr>
+<td>Shift-Drag Left Click</td>
+<td align="left">Adjust Contrast/Brightness</td>
+</tr>
+
+<tr>
+<td>Zoom in at current location</td>
+<td align="left">Ctrl-Left-Click (or scroll)</td>
+</tr>
+
+<tr>
+<td>Zoom out at current location</td>
+<td align="left">Ctrl-Right-Click (or scroll)</td>
+</tr>
+</tbody>
+</table>
+
+<p>When you&rsquo;re in Voxel/Recon/ROI edit mode:</p>
+
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th align="left">Action</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Draw / Fill</td>
+<td align="left">Left Click</td>
+</tr>
+
+<tr>
+<td>Erase / Erase Fill</td>
+<td align="left">Shift+Left Click</td>
+</tr>
+</tbody>
+</table>
+
+<p>That conludes this short tutorial about Freeview!
+If you want to read/know more, the full Freeview Guide can be found <a href="https://surfer.nmr.mgh.harvard.edu/fswiki/FreeviewGuide" target="_blank">here</a>.</p>
+
+<p><!-- https://discourse.gohugo.io/t/linking-to-static-files-with-hugo/8282 --></p>
+
+    </div>
+
+    
+
+
+
+
+
+    
+      
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<div class="media author-card" itemscope itemtype="http://schema.org/Person">
+  
+  
+  <img class="portrait mr-3" src="/inezpereira.github.io/author/admin/avatar_hu3b9768cf623bccc3d62e99e1de773e86_3279643_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+  
+
+  <div class="media-body">
+    <h5 class="card-title" itemprop="name"><a href="/inezpereira.github.io/authors/admin">Inês Pereira</a></h5>
+    <h6 class="card-subtitle">Neurology resident and Computational Neuroscience enthusiast</h6>
+    <p class="card-text" itemprop="description">My research interests include using modelling approaches to better understand neurological and psychiatric diseases.</p>
+    <ul class="network-icon" aria-hidden="true">
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="/inezpereira.github.io/#contact" >
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://twitter.com/iibpereira" target="_blank" rel="noopener">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://github.com/InezPereira" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+      
+      
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<div class="container">
+  <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    
+    <script src="/inezpereira.github.io/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/inezpereira.github.io/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/inezpereira.github.io/js/academic.min.d7381f2d79e6271d4da28f474f49096c.js"></script>
+
+  </body>
+</html>
+

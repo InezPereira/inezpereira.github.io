@@ -6,9 +6,20 @@
     <description>Recent content in Posts on Purkinje Madness</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 31 Mar 2019 11:17:49 +0200</lastBuildDate>
     
 	<atom:link href="inezpereira.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Freeview from FreeSurfer</title>
+      <link>inezpereira.github.io/post/freeview/</link>
+      <pubDate>Sun, 31 Mar 2019 11:17:49 +0200</pubDate>
+      
+      <guid>inezpereira.github.io/post/freeview/</guid>
+      <description>As documented on the main webpage, FreeSurfer is an open source software package for the analysis and visualization of structural and functional neuroimaging data. It is developed by the Laboratory for Computational Neuroimaging at the Athinoula A. Martinos Center for Biomedical Imaging.
+I have started using FreeSurfer and Freeview last year and, albeit the documentation being quite thorough, I had a harder time navigating the website than I expected.</description>
+    </item>
     
   </channel>
 </rss>
