@@ -28,7 +28,7 @@
   
     
   
-  <meta name="description" content="">
+  <meta name="description" content="A summarised and on-the-go completed list of MCMC methods">
 
   
   <link rel="alternate" hreflang="en-us" href="inezpereira.github.io/post/mcmc_overview/">
@@ -119,8 +119,8 @@
   
   <meta property="og:site_name" content="Purkinje Madness">
   <meta property="og:url" content="inezpereira.github.io/post/mcmc_overview/">
-  <meta property="og:title" content="Mcmc_overview | Purkinje Madness">
-  <meta property="og:description" content=""><meta property="og:image" content="inezpereira.github.io/img/icon-192.png">
+  <meta property="og:title" content="Markov Chain Monte Carlo | Purkinje Madness">
+  <meta property="og:description" content="A summarised and on-the-go completed list of MCMC methods"><meta property="og:image" content="inezpereira.github.io/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-03-22T19:21:12&#43;01:00">
@@ -132,7 +132,7 @@
 
   
 
-  <title>Mcmc_overview | Purkinje Madness</title>
+  <title>Markov Chain Monte Carlo | Purkinje Madness</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
@@ -351,7 +351,7 @@
   
   
 <div class="article-container pt-3">
-  <h1 itemprop="name">Mcmc_overview</h1>
+  <h1 itemprop="name">Markov Chain Monte Carlo</h1>
 
   
 
@@ -383,7 +383,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    0 min read
+    2 min read
   </span>
   
 
@@ -398,7 +398,7 @@
   <ul class="share">
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Mcmc_overview&amp;url=inezpereira.github.io%2fpost%2fmcmc_overview%2f"
+         href="https://twitter.com/intent/tweet?text=Markov%20Chain%20Monte%20Carlo&amp;url=inezpereira.github.io%2fpost%2fmcmc_overview%2f"
          target="_blank" rel="noopener">
         <i class="fab fa-twitter"></i>
       </a>
@@ -412,21 +412,21 @@
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=inezpereira.github.io%2fpost%2fmcmc_overview%2f&amp;title=Mcmc_overview"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=inezpereira.github.io%2fpost%2fmcmc_overview%2f&amp;title=Markov%20Chain%20Monte%20Carlo"
          target="_blank" rel="noopener">
         <i class="fab fa-linkedin-in"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=inezpereira.github.io%2fpost%2fmcmc_overview%2f&amp;title=Mcmc_overview"
+         href="http://service.weibo.com/share/share.php?url=inezpereira.github.io%2fpost%2fmcmc_overview%2f&amp;title=Markov%20Chain%20Monte%20Carlo"
          target="_blank" rel="noopener">
         <i class="fab fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Mcmc_overview&amp;body=inezpereira.github.io%2fpost%2fmcmc_overview%2f">
+         href="mailto:?subject=Markov%20Chain%20Monte%20Carlo&amp;body=inezpereira.github.io%2fpost%2fmcmc_overview%2f">
         <i class="fas fa-envelope"></i>
       </a>
     </li>
@@ -464,7 +464,58 @@
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      
+      <p>Markov chain Monte Carlo methods are stochastic (as opposed to deterministic)
+approximation schemes which allow us to sample from complicated multi-dimensional
+distributions. Briefly put, the main idea is to construct a Markov chain on the
+state space whose stationary distribution is the density $p^*(x)$ we wish to
+sample from.</p>
+
+<p>Wait, what? Can you repeat that?</p>
+
+<p>Yep, this general method builds up on a lot of concepts, which I won&rsquo;t have time
+(nor space) to explore in one single article. Let&rsquo;s be honest, you wouldn&rsquo;t
+read the whole thing anyway.</p>
+
+<p>Sooo, here is the deal. I have been reading a lot (<em>a lot</em> 🤓) of papers on this
+issue, and one of the things that really confused me was that I could not order
+or organize the different approaches in my head. So this first article is for
+those who already have a basic understanding of MCMC and wish to dig deeper but
+are, as I still am, often overwhelmed by this micro-field&rsquo;s jargon and creative
+mathematical thinking.</p>
+
+<ul>
+<li><strong>Metropolis Hastings algorithm</strong>
+
+<ul>
+<li><strong>Metropolis algorithm</strong>: Here, the proposal distribution is symmetric, meaning
+$$q(A|B)=q(B|A)$$ and the acceptance probability simplifies to
+$$
+A_k(z^*, z^{(\tau)})=\min\Bigg(1,\frac{\tilde{p}(z^*)}{\tilde{p}(z^{(\tau)})} \Bigg)
+$$</li>
+<li><strong>Gibbs sampling</strong>: You always accept the new sample: $q_{k}(z*|z) = p(z^*_k|z_{\sim k})$
+The fact that the acceptance rate is 1 does not mean that Gibbs will converge
+rapidly, since it only updates one coordinate at a time.</li>
+<li><strong>Random walk Metropolis algorithm</strong>: the proposal distribution is set as a gaussian
+distribution centered on the current state, meaning:
+$q(x’|x) \sim N(x’|x, \Sigma)$</li>
+<li><strong>Independence sampler</strong>**: the new state is independent of the previous state $q(x’|x) = q(x’)$</li>
+<li><strong>Adaptive MCMC</strong>: change the parameters of the proposal as the algorithm is
+running to increase efficiency. This allows one to for example start with a
+broader covariance and hence do large moves through the space until a mode
+is found, where a narrowing of the covariance would ensure careful exploration
+of the region around the mode.</li>
+<li><strong>Data-driven MCMC</strong></li>
+</ul></li>
+<li><strong>Slice sampling</strong></li>
+<li><strong>Multiple-try Metropolis</strong></li>
+<li><strong>Reversible-jump</strong></li>
+<li><strong>Hamiltonian (or Hybrid) Monte Carlo (HMC)</strong>
+
+<ul>
+<li><strong>Metropolis-adjusted Langevin algorithm</strong> : When only one deterministic step is used, i.e. L = 1, one obtains the Langevin algorithm, which is a discrete time approximation of a Langevin diffusion process.</li>
+</ul></li>
+</ul>
+
     </div>
 
     
