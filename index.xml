@@ -51,7 +51,7 @@ thorough, I had a harder time navigating the website than I expected.&lt;/p&gt;
 
 &lt;tr&gt;
 &lt;td&gt;-l&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;load a a label file&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;load a label file&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
@@ -121,13 +121,18 @@ found by experimenting are:&lt;/p&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
+&lt;td&gt;Alt + E&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Edit Tool&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
 &lt;td&gt;Ctrl + F&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;Toggle all surfaces&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
 &lt;td&gt;Alt + C&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Alternate between volumes&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Alternate between volumes/surfaces&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
@@ -138,6 +143,46 @@ found by experimenting are:&lt;/p&gt;
 &lt;tr&gt;
 &lt;td&gt;Ctrl + T&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;Point set edit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Ctrl + R&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Reset View&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Alt + X&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Show sagital images&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Alt + Y&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Show axial images&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Alt + Z&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Show coronal images&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Alt + A/D&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Decrease/Increase opacity of currently highlighted volume&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Ctrl + D&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Hide brainmask&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Alt + F&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Toggle currently highlighted surface&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Alt + U&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Show cursor&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
