@@ -6,15 +6,25 @@
     <description>Recent content in Posts on Purkinje Delirium</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 03 Apr 2019 20:12:34 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 31 Mar 2019 11:17:49 +0200</lastBuildDate>
     
 	<atom:link href="https://inespereira.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Freeview from FreeSurfer</title>
+      <link>https://inespereira.com/post/freeview/</link>
+      <pubDate>Sun, 31 Mar 2019 11:17:49 +0200</pubDate>
+      
+      <guid>https://inespereira.com/post/freeview/</guid>
+      <description>FreeSurfer is an open source software package for the analysis and visualization of structural and functional neuroimaging data. It is developed by the Laboratory for Computational Neuroimaging at the Athinoula A. Martinos Center for Biomedical Imaging. It&amp;rsquo;s a really useful tool that allows for automated processes as well as manual interventions, mainly through it&amp;rsquo;s GUI, Freeview.
+I started using FreeSurfer and Freeview last year and, albeit the documentation being quite thorough, I had a harder time navigating the website than I expected.</description>
+    </item>
+    
+    <item>
       <title>The Art of Foot Tickling </title>
       <link>https://inespereira.com/post/the-art-of-foot-tickling/</link>
-      <pubDate>Wed, 03 Apr 2019 20:12:34 +0200</pubDate>
+      <pubDate>Tue, 03 Apr 2018 20:12:34 +0200</pubDate>
       
       <guid>https://inespereira.com/post/the-art-of-foot-tickling/</guid>
       <description>&lt;p style=&#34;text-align: justify;&#34;&gt;One can sometimes feel very puzzled when watching a physician perform the neurological examination. I mean, what information is there to extract from a retracting big toe, from feet constantly a bit more apart from each other than they should be or even from an absent tendon reflex? How were these signs observed in the first place and how did we come to know how to interpret them?&lt;/p&gt;
@@ -64,16 +74,6 @@
 
 &lt;p style=&#34;text-align: justify;&#34;&gt;Aside from being instilled with a few more drops of neurophilia, I hope you now better understand how amazing reflexes actually are. Take a look again at their organized base-structure. Notice that the arc in Figure 1 does not involve the brain’s outer cortex, and this is true for other non-spinal reflexes. Hence, reflexes are often useful as a way to generate rapid action without the need to involve consciousness. Reflexes are the reason why you “automatically” remove your hand from a burning pan, why your pupils fastly constrict when exposed to more light, why you salivate when you set your eyes on that oh-so-tasty moussaka.&lt;/p&gt;
 &lt;p style=&#34;text-align: justify;&#34;&gt;If anything, you are now able to understand some &lt;a href=&#34;https://itunes.apple.com/us/album/table-for-one/id1292944953&#34;&gt;very nerdy references&lt;/a&gt;. Until next time!&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Freeview from FreeSurfer</title>
-      <link>https://inespereira.com/post/freeview/</link>
-      <pubDate>Sun, 31 Mar 2019 11:17:49 +0200</pubDate>
-      
-      <guid>https://inespereira.com/post/freeview/</guid>
-      <description>FreeSurfer is an open source software package for the analysis and visualization of structural and functional neuroimaging data. It is developed by the Laboratory for Computational Neuroimaging at the Athinoula A. Martinos Center for Biomedical Imaging. It&amp;rsquo;s a really useful tool that allows for automated processes as well as manual interventions, mainly through it&amp;rsquo;s GUI, Freeview.
-I started using FreeSurfer and Freeview last year and, albeit the documentation being quite thorough, I had a harder time navigating the website than I expected.</description>
     </item>
     
   </channel>
