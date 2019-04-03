@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Purkinje Delirium on Purkinje Delirium</title>
-    <link>inezpereira.github.io/</link>
+    <link>https://inezpereira.github.io/</link>
     <description>Recent content in Purkinje Delirium on Purkinje Delirium</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 31 Mar 2019 11:17:49 +0200</lastBuildDate>
-    <atom:link href="inezpereira.github.io/" rel="self" type="application/rss+xml" />
+    <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Freeview from FreeSurfer</title>
-      <link>inezpereira.github.io/post/freeview/</link>
+      <link>https://inezpereira.github.io/post/freeview/</link>
       <pubDate>Sun, 31 Mar 2019 11:17:49 +0200</pubDate>
       
-      <guid>inezpereira.github.io/post/freeview/</guid>
+      <guid>https://inezpereira.github.io/post/freeview/</guid>
       <description>
 
 &lt;p&gt;FreeSurfer is an open source software package for the analysis and visualization of structural and functional neuroimaging data. It is developed by the Laboratory for Computational Neuroimaging at the Athinoula A. Martinos Center for Biomedical Imaging.
@@ -122,7 +122,7 @@ found by experimenting are:&lt;/p&gt;
 
 &lt;tr&gt;
 &lt;td&gt;Alt + E&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Edit Tool&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;img src=&#34;voxel_edit.png&#34; style=&#34;float: left; margin-right: 10px;&#34;/&gt; Voxel Edit Tool&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
