@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Purkinje Delirium on Purkinje Delirium</title>
-    <link>https://inezpereira.github.io/</link>
+    <link>https://inespereira.com/</link>
     <description>Recent content in Purkinje Delirium on Purkinje Delirium</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
@@ -11,10 +11,10 @@
     
     <item>
       <title>Freeview from FreeSurfer</title>
-      <link>https://inezpereira.github.io/post/freeview/</link>
+      <link>https://inespereira.com/post/freeview/</link>
       <pubDate>Sun, 31 Mar 2019 11:17:49 +0200</pubDate>
       
-      <guid>https://inezpereira.github.io/post/freeview/</guid>
+      <guid>https://inespereira.com/post/freeview/</guid>
       <description>
 
 &lt;p&gt;FreeSurfer is an open source software package for the analysis and visualization of structural and functional neuroimaging data. It is developed by the Laboratory for Computational Neuroimaging at the Athinoula A. Martinos Center for Biomedical Imaging.

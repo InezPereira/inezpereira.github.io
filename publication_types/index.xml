@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Publication_types on Purkinje Delirium</title>
-    <link>https://inezpereira.github.io/publication_types/</link>
+    <link>https://inespereira.com/publication_types/</link>
     <description>Recent content in Publication_types on Purkinje Delirium</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://inezpereira.github.io/publication_types/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://inespereira.com/publication_types/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

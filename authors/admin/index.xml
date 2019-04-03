@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>admin on Purkinje Delirium</title>
-    <link>https://inezpereira.github.io/authors/admin/</link>
+    <link>https://inespereira.com/authors/admin/</link>
     <description>Recent content in admin on Purkinje Delirium</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://inezpereira.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://inespereira.com/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>https://inezpereira.github.io/author/admin/</link>
+      <link>https://inespereira.com/author/admin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://inezpereira.github.io/author/admin/</guid>
+      <guid>https://inespereira.com/author/admin/</guid>
       <description>Just another human who happens to love combining mathematical modelling and translational research.</description>
     </item>
     
