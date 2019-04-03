@@ -6,46 +6,8 @@
     <description>Recent content in Purkinje Delirium on Purkinje Delirium</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 03 Apr 2019 20:52:23 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 03 Apr 2019 20:12:34 +0200</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>Post Void Residual and How to Measure It</title>
-      <link>https://inespereira.com/post/post-void-residual-and-how-to-measure-it/</link>
-      <pubDate>Wed, 03 Apr 2019 20:52:23 +0200</pubDate>
-      
-      <guid>https://inespereira.com/post/post-void-residual-and-how-to-measure-it/</guid>
-      <description>&lt;p&gt;Post-void residual refers to the amount of urine present in the bladder after micturition. Why should it be important to know how much urine you&amp;rsquo;re accumulating in your bladder? Because stagnant urine can be a predisposing factor for infection (theory backed up by intuition, although research yields conflicting results) and can also cause kidney lesion. Imagine a hose, blocked or semi-blocked on one side and, on the other, bound to a tap with a continuous flow of water. The tap is your kidneys. Since they won&amp;rsquo;t (unless they are severely damaged) stop producing urine, a blocked bladder outflow will dilate the anatomical structures leading to the urethra, ultimately causing kidney damage as well.&lt;/p&gt;
-
-&lt;p&gt;Because doctors and nurses are well aware of those risks, patients are often catheterised (that means a tube is placed in the urethra to help the bladder void completely)  in situations where some degree of bladder dysfunction is expected or normal voiding made difficult, such as after surgery.&lt;/p&gt;
-
-&lt;p&gt;But then comes the question: when is the best time to remove the catheter? How do I know if this particular patient will accumulate too much urine or not?&lt;/p&gt;
-
-&lt;p&gt;Well, one of the ways one can estimate the post-void residual (PVR), is, strangely, by briefly catheterizing the patient again, directly or not long after urination. One can thus appreciate how much residual urine comes out and, if too much is drained, then the catheter is left in place. However, this method is still invasive and implies discomfort. Hence, non-invasive methods have been sought out. And, indeed, ultrasound has been used as a non-invasive method for assessing bladder volume since Holmes first described it in 1967. The problem with ultrasound is that it only gives you 2D images, so you have to come up with a geometrical model for the bladder (and, thus, a mathematical formula) in order to be able to make calculations indirectly. And this is where it gets tricky. Some assume the bladder to be a rectangular prism, others prefer to assimilate it to an ellipsoid shape and some try not to start with any given geometrical premise at all. I&amp;rsquo;ve read that 21 formulas have been described and, up to this date, I&amp;rsquo;ve set my eyes on (sadly just) 11 of them. But, because the post-micturition bladder does not conform to any geometrical shape perfectly, all of these formulae are subject to large degrees of error. And this is where correction factors come into play.&lt;/p&gt;
-
-&lt;p&gt;The formulae by Hakenberg &lt;em&gt;et al.&lt;/em&gt; (1983), Poston &lt;em&gt;et al.&lt;/em&gt; (1983) and Hartnell &lt;em&gt;et al.&lt;/em&gt; (1987)) assume the shape of the post-micturition bladder to be a rectangular-based prism.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;(&lt;b&gt;Math-reminder&lt;/b&gt;: The volume of a rectangular-based prism is Height x Width x Depth x 0.5.)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;By starting off with this formula, what these authors did was to measure the PVR through ultrasound and then, in the same patient and right after this first measurement, a urinary catheter was placed in order to get the true value of the PVR. Bear with me, we&amp;rsquo;re almost done. So, what these authors did was to compare both methods to see how far off ultrasound was. Based on these results, the authors altered the final coefficient to 0.625, 0.7 and 0.65, respectively.&lt;/p&gt;
-
-&lt;p&gt;Now, the final question is, which of these coefficients should one use? I couldn&amp;rsquo;t find any European guidelines on the matter and, since I&amp;rsquo;m working in Germany, I tried to see if I could find any German literature. And, indeed, the only guideline I found was one related to &lt;em&gt;Sonographie im Rahmen der urogynäkologischen Diagnostik&lt;/em&gt; by the &lt;em&gt;Deutsche Gesellschaft für Gynäkologie und Geburtshilfe &lt;/em&gt;(the German Society of  Obstetrics and Gynecology) where the mentioned formula was Height x Width x Depth x 0.7. Oh, and the &lt;em&gt;Oxford Handbook of Urology &lt;/em&gt;also mentions it as a frequently used formula.&lt;/p&gt;
-
-&lt;p&gt;To sum it up, ultrasound is now the method of choice when measuring post-void residual. Since it is an indirect form of measurement, one has to resort to mathematical formulae to be able to calculate the value of PVR. However, since the bladder does not always assume any particular geometrical shape, we have to be aware that, whatever model we use, we are prone to some degree of error. As always with models, really.&lt;/p&gt;
-
-&lt;p&gt;In the meantime: &lt;strong&gt;PVR&lt;/strong&gt; (in mL) &lt;strong&gt;= Height&lt;/strong&gt; (in cm ) &lt;strong&gt;x Width&lt;/strong&gt; (in cm) &lt;strong&gt;x Depth&lt;/strong&gt; (in cm) &lt;strong&gt;x 0.7&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;&lt;strong&gt;List of references:&lt;/strong&gt;&lt;/em&gt;
-&lt;ul&gt;
-    &lt;li&gt;015/055 – S2k-Leitlinie: Sonographie im Rahmen der urogynäkologischen Diagnostik, Deutsche Gesellschaft für Gynäkologie und Geburtshilfe e.V., 2013&lt;/li&gt;
-    &lt;li&gt;Birch &lt;em&gt;et al&lt;/em&gt;, “Serial Residual Volumes in Men with Prostatic Hypertrophy”, &lt;i&gt;British&lt;/i&gt; &lt;i&gt;Journal&lt;/i&gt; &lt;i&gt;Of&lt;/i&gt; &lt;i&gt;Urology&lt;/i&gt;&lt;i&gt;, &lt;/i&gt;1988.&lt;/li&gt;
-    &lt;li&gt;Lucas &lt;i&gt;et al., &lt;/i&gt;“Guidelines on Urinary Incontinence“, European Association of Urology, 2015.&lt;/li&gt;
-    &lt;li&gt;Reynard &lt;em&gt;et al&lt;/em&gt;, &lt;em&gt;Oxford Handbook of Urology, &lt;/em&gt;3rd edition, Oxford Medical Publications, 2013.&lt;/li&gt;
-    &lt;li&gt;Simforoosh &lt;i&gt;et&lt;/i&gt;&lt;i&gt; al&lt;/i&gt;., “Accuracy of residual urine measurement in men: comparison between real-time ultrasonography and catheterization”, &lt;i&gt;The Journal Of Urology&lt;/i&gt;, 1997.&lt;/li&gt;
-&lt;/ul&gt;
- &lt;/p&gt;
-</description>
-    </item>
     
     <item>
       <title>The Art of Foot Tickling </title>
