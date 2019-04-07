@@ -17,7 +17,7 @@
       <guid>https://inespereira.com/post/freeview/</guid>
       <description>
 
-&lt;p&gt;FreeSurfer is an open source software package for the analysis and visualization of structural and functional neuroimaging data. It is developed by the Laboratory for Computational Neuroimaging at the Athinoula A. Martinos Center for Biomedical Imaging.
+&lt;p&gt;&lt;a href=&#34;https://surfer.nmr.mgh.harvard.edu/&#34; target=&#34;_blank&#34;&gt;FreeSurfer&lt;/a&gt; is an open source software package for the analysis and visualization of structural and functional neuroimaging data. It is developed by the &lt;a href=&#34;https://martinos.org/lab/lcn&#34; target=&#34;_blank&#34;&gt;Laboratory for Computational Neuroimaging&lt;/a&gt; at the &lt;a href=&#34;https://martinos.org/&#34; target=&#34;_blank&#34;&gt;Athinoula A. Martinos Center for Biomedical Imaging&lt;/a&gt;.
 It&amp;rsquo;s a really useful tool that allows for automated processes as well as manual interventions,
 mainly through it&amp;rsquo;s GUI, Freeview.&lt;/p&gt;
 
