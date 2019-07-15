@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Inês Pereira on Purkinje Delirium</title>
+    <link>https://inespereira.com/authors/in%C3%AAs-pereira/</link>
+    <description>Recent content in Inês Pereira on Purkinje Delirium</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 03 Jul 2019 15:21:13 +0200</lastBuildDate>
+    
+	<atom:link href="https://inespereira.com/authors/in%C3%AAs-pereira/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A beginner&#39;s guide to ETH&#39;s Euler</title>
+      <link>https://inespereira.com/post/eth-euler/</link>
+      <pubDate>Wed, 03 Jul 2019 15:21:13 +0200</pubDate>
+      
+      <guid>https://inespereira.com/post/eth-euler/</guid>
+      <description>🖍 Nota bene: You will need to be an ETH member to use Euler. However, this post might still be useful if you happen to be working on another cluster which uses the LSF batch system. Also relevant: I am currently mainly using MATLAB to run my simulations, so you&amp;rsquo;ll find some MATLAB specific advice. For Python specifics, check out this page. ⌛️ TL;DR: check out the end of the blog post for a practical suggestion on how to structure your job submission scripts.</description>
+    </item>
+    
+  </channel>
+</rss>

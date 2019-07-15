@@ -6,8 +6,429 @@
     <description>Recent content in Purkinje Delirium on Purkinje Delirium</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Mar 2019 11:17:49 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jul 2019 15:21:13 +0200</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A beginner&#39;s guide to ETH&#39;s Euler</title>
+      <link>https://inespereira.com/post/eth-euler/</link>
+      <pubDate>Wed, 03 Jul 2019 15:21:13 +0200</pubDate>
+      
+      <guid>https://inespereira.com/post/eth-euler/</guid>
+      <description>
+
+&lt;p&gt;🖍 &lt;em&gt;Nota bene&lt;/em&gt;: You will need to be an ETH member to use Euler. However, this
+post might still be useful if you happen to be working on another cluster which
+uses the &lt;a href=&#34;https://en.wikipedia.org/wiki/Platform_LSF&#34; target=&#34;_blank&#34;&gt;LSF&lt;/a&gt;  batch system. Also relevant: I am currently mainly using MATLAB to run my simulations, so you&amp;rsquo;ll find some MATLAB specific advice.
+For Python specifics, check out &lt;a href=&#34;https://scicomp.ethz.ch/wiki/Python&#34; target=&#34;_blank&#34;&gt;this page&lt;/a&gt;.
+&lt;!-- Also note that [GPUs are only provided in the Leohnard cluster](https://scicomp.ethz.ch/wiki/Getting_started_with_GPUs)
+and access is restricted to shareholders. --&gt;&lt;/p&gt;
+
+&lt;p&gt;⌛️ &lt;strong&gt;TL;DR&lt;/strong&gt;: check out the end of the blog post for a practical suggestion on how
+to structure your job submission scripts.&lt;/p&gt;
+
+&lt;h2 id=&#34;euler&#34;&gt;Euler ?&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://scicomp.ethz.ch/w/images/a/ad/Getting_started_with_Euler_(September_2016).pdf&#34; target=&#34;_blank&#34;&gt;Euler&lt;/a&gt;
+is the high performance computing cluster at ETH Zurich.
+&lt;!-- Its name stands for *Erweiterbarer, Umweltfreundlicher, Leistungsfähiger ETH Rechner*. --&gt;
+Like its predecessors, Euler follows a shareholder model, and is for the most part financed by its users.
+These &amp;ldquo;shareholders&amp;rdquo; then receive a share of the cluster&amp;rsquo;s resources (&lt;em&gt;i.e&lt;/em&gt; CPU time), which is proportional to their investment.
+However, a small share of Euler is financed by the IT Services and is open to all ETH members.&lt;/p&gt;
+
+&lt;p style=&#34;text-align: center;&#34;&gt;
+And that&#39;s a huge hooray for students!
+&lt;/p&gt;
+
+&lt;p&gt;Euler is really a &lt;em&gt;great&lt;/em&gt; resource, but can be associated with a steep learning curve,
+especially if you are not used to working with a terminal and all that jazz.&lt;/p&gt;
+
+&lt;p&gt;In this post, we&amp;rsquo;ll go through:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;How to run your first job&lt;/li&gt;
+&lt;li&gt;Some advanced tricks&lt;/li&gt;
+&lt;li&gt;A template for future jobs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;running-a-simple-job&#34;&gt;Running a simple job&lt;/h2&gt;
+
+&lt;h3 id=&#34;connecting-to-euler&#34;&gt;Connecting to Euler&lt;/h3&gt;
+
+&lt;p&gt;The first thing you need to do is to connect to Euler.
+To do that, you either need to be within the ETH network or connected via VPN.
+The only requirement to login is a valid NETHZ account (no forms to fill out 🎉).
+Open a terminal and type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh username@euler.ethz.ch
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now type in your NETHZ password&amp;hellip; and you&amp;rsquo;re in!
+If this is the first time you&amp;rsquo;re logging in, the only extra step is to accept the
+cluster&amp;rsquo;s usage rights.&lt;/p&gt;
+
+&lt;h3 id=&#34;file-transfer&#34;&gt;File transfer&lt;/h3&gt;
+
+&lt;p&gt;To run your jobs, you&amp;rsquo;ll need to transfer your scripts and data to the cluster.
+To do so, you can use the &lt;code&gt;scp&lt;/code&gt; command. The general use is as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;scp [options] source destination
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;!-- There are some difference between the two commands, but I&#39;ll let you read more
+about [here](https://stackoverflow.com/questions/20244585/how-does-scp-differ-from-rsync)
+and [here](https://superuser.com/questions/393608/difference-between-scp-and-rsync). --&gt;
+
+&lt;!-- For now, let&#39;s focus on the `scp` command.  --&gt;
+
+&lt;p&gt;Specifically, what you&amp;rsquo;ll need to type is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;scp file username@euler.ethz.ch:path/to/destination # from local computer to Euler
+scp username@euler.ethz.ch:path/to/source/file path/to/destination # from Euler to local computer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To transfer directories, the option &lt;code&gt;-r&lt;/code&gt; needs to be used:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;scp -r directory username@euler.ethz.ch:path/to/destination # from local computer to Euler
+scp -r username@euler.ethz.ch:path/to/source/directory path/to/destination # from Euler to local computer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You&amp;rsquo;ll find that acquainting yourself with bash scripting will come in handy for
+this type of commands. Check out the cheat sheet I left in the end of the blog post
+for just that!&lt;/p&gt;
+
+&lt;h3 id=&#34;a-word-on-data-storage&#34;&gt;A word on data storage&lt;/h3&gt;
+
+&lt;p&gt;When it comes to personal storage, every user has access to two options:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;HOME=/cluster/home/username
+SCRATCH=/cluster/scratch/username
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Home is a safe long-term storage for important data. Only &lt;em&gt;you&lt;/em&gt; can access it and
+the content is saved every hour (snapshot) and every night (tape backup).
+You are allowed 16 GB of data or a maximum of 100 000 files.
+&lt;strong&gt;This is the directory (folder) you&amp;rsquo;ll automatically find yourself in once you login.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Scratch, on the other hand, is designed as a fast short-term storage. There is
+&lt;em&gt;no&lt;/em&gt; backup and ETH will warn you that it is &lt;em&gt;purged on a regular basis&lt;/em&gt;. Your disk
+quota in scratch rises to 2.5 TB and a maximum of 1 000 000 files.&lt;/p&gt;
+
+&lt;p&gt;To check how far away (or how close&amp;hellip;) you are from your quota, use the command
+&lt;code&gt;lquota&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;lquota
++-----------------------------+-------------+------------------+------------------+------------------+
+| Storage location:           | Quota type: | Used:            | Soft quota:      | Hard quota:      |
++-----------------------------+-------------+------------------+------------------+------------------+
+| /cluster/home/user          | space       |          8.85 GB |         17.18 GB |         21.47 GB |
+| /cluster/home/user          | files       |            25610 |            80000 |           100000 |
++-----------------------------+-------------+------------------+------------------+------------------+
+| /cluster/shadow             | space       |          4.10 kB |          2.15 GB |          2.15 GB |
+| /cluster/shadow             | files       |                2 |            50000 |            50000 |
++-----------------------------+-------------+------------------+------------------+------------------+
+| /cluster/scratch/user       | space       |        237.57 kB |          2.50 TB |          2.70 TB |
+| /cluster/scratch/user       | files       |               29 |          1000000 |          1500000 |
++-----------------------------+-------------+------------------+------------------+------------------+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For more information on data storage (&lt;em&gt;e.g.&lt;/em&gt; options for shareholders), be sure
+to check out this &lt;a href=&#34;https://scicomp.ethz.ch/w/images/a/ad/Getting_started_with_Euler_(September_2016).pdf&#34; target=&#34;_blank&#34;&gt;presentation&lt;/a&gt;
+or this &lt;a href=&#34;https://scicomp.ethz.ch/wiki/Storage_systems&#34; target=&#34;_blank&#34;&gt;page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;using-euler&#34;&gt;Using Euler&lt;/h3&gt;
+
+&lt;p&gt;All right! Now we&amp;rsquo;re ready to start using the cluster!
+And it all boils down to this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;bsub [LSF options] job
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Of course, the tricky part is to figure out how to use the options and what
+constitutes a job.
+Well, here are a few options I find particularly useful (for more, check out
+  &lt;a href=&#34;https://scicomp.ethz.ch/wiki/LSF_mini_reference&#34; target=&#34;_blank&#34;&gt;this reference&lt;/a&gt;):&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Option&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-W HH:MM&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Allowed duration for job. Default: 04:00 hours.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-R &amp;quot;rusage[mem=X]&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Memory (in MB per core) required. Default: X = 1024 MB.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-J jobname&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Assigns name to job. Not necessarily unique!&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-w &amp;quot;depcond&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Sets dependencies between jobs. More on this below.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-r&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;If your node crashes, LSF will re-run the job on another node.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Now mind you that a job can be:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;a Linux command: &lt;code&gt;bsub [LSF options] command&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;a shell script: &lt;code&gt;bsub [LSF options] &amp;lt; script&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;a program: &lt;code&gt;bsub [LSF options] path/to/program&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- So, as you can see, different types of jobs may imply a slightly different syntax. --&gt;
+
+&lt;p&gt;Ok, so far so good. Now, to use MATLAB, you&amp;rsquo;ll first need to load it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;module load new matlab/R2018a
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that I am loading a specific version of MATLAB. For more information on how to
+configure the MATLAB version you want to run, check out &lt;a href=&#34;https://scicomp.ethz.ch/wiki/MATLAB&#34; target=&#34;_blank&#34;&gt;this link&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Once that&amp;rsquo;s done, let&amp;rsquo;s say you would like to fit a model using a script you wrote beforehand.
+To submit your job, you then type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;bsub -J &amp;quot;fitModel&amp;quot; matlab -singleCompThread -nodisplay -r &amp;quot;fit_model&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Pardon? What are all &lt;em&gt;those&lt;/em&gt; options? It&amp;rsquo;s fairly easy:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-singleCompThread&lt;/code&gt;: forces MATLAB to use only one thread for its computations
+(prevents MATLAB from overloading the compute nodes).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-nodisplay&lt;/code&gt;: just explicitly tell MATLAB no graphical display is available.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;⚠️ &lt;strong&gt;#ProTip&lt;/strong&gt;: no &lt;code&gt;.m&lt;/code&gt; at the end of your script name (bsub doesn’t require that you pass the file extension).
+That has once cost me an embarrassing amount of time.&lt;/p&gt;
+
+&lt;p&gt;You have submitted your job and get back:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Generic job.
+Job &amp;lt;94709747&amp;gt; is submitted to queue &amp;lt;normal.4h&amp;gt;.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That looks good. To manage your jobs, you&amp;rsquo;ll then need two new commands:
+&lt;code&gt;bjobs&lt;/code&gt; and &lt;code&gt;bkill&lt;/code&gt;, which let you monitor or kill all jobs or specific jobs
+(for more details, read &lt;a href=&#34;https://scicomp.ethz.ch/wiki/LSF_mini_reference&#34; target=&#34;_blank&#34;&gt;this reference&lt;/a&gt;).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;bjobs
+&amp;gt; JOBID      USER   STAT  QUEUE      FROM_HOST   EXEC_HOST   JOB_NAME   SUBMIT_TIME
+&amp;gt; 94709747   jdoe   RUN   normal.4h   euler01  eu-c7-106-0  fitModel   Jul  3 07:19
+
+bkill 0 # terminate all jobs
+&amp;gt; Job &amp;lt;94709747&amp;gt; is being terminated
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;An alternative to &lt;code&gt;bjobs&lt;/code&gt; is &lt;a href=&#34;https://scicomp.ethz.ch/wiki/Using_the_batch_system#bbjobs&#34; target=&#34;_blank&#34;&gt;bbjobs&lt;/a&gt;
+(aka better bjobs).&lt;/p&gt;
+
+&lt;h2 id=&#34;more-advanced-tricks&#34;&gt;More advanced tricks&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s take things up a notch. Let&amp;rsquo;s say that you need to run jobs which somehow
+depend on each other. The example I&amp;rsquo;ll use here is a greedy feature selection
+algorithm. Don&amp;rsquo;t mind the details, the important thing is you need to do your
+computations in three stages:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Run a setup function (e.g. restructure some folders)&lt;/li&gt;
+&lt;li&gt;Train your models&lt;/li&gt;
+&lt;li&gt;Choose the best model&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Now that means that you only want step 2 to kick in once the setup is ready.
+That&amp;rsquo;s called &lt;a href=&#34;https://scicomp.ethz.ch/wiki/Job_chaining&#34; target=&#34;_blank&#34;&gt;job chaining&lt;/a&gt; and can
+be done as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;bsub -J job1 command1
+bsub -J job2 -w &amp;quot;done(job1)&amp;quot; command2
+bsub -J job3 -w &amp;quot;done(job2)&amp;quot; command3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note however that the condition for &lt;code&gt;job2&lt;/code&gt; is only fulfilled if &lt;code&gt;job1&lt;/code&gt; is
+completed successfully. If, for some reason, &lt;code&gt;job1&lt;/code&gt; crashes or is killed because
+it reached the runtime or memory limit, then the dependency for &lt;code&gt;job2&lt;/code&gt; is never
+true and &lt;code&gt;job2&lt;/code&gt; will stand, pending, forever&amp;hellip;
+If you actually, for some heartless reason, don&amp;rsquo;t really care what happens to
+&lt;code&gt;job1&lt;/code&gt;, then you should write:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;bsub -J job1 command1
+bsub -J job2 -w &amp;quot;ended(job1)&amp;quot; command2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If step 2 involves a suite of models and you want to only start step 3
+once &lt;em&gt;all&lt;/em&gt; models in step 2 are finished, then you might run into a problem.&lt;/p&gt;
+
+&lt;p&gt;If you only have two models and don&amp;rsquo;t mind writing out all the dependencies, you
+can opt for:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;bsub -J job1 command1 # train model 1
+bsub -J job2 command2 # train model 2
+bsub -J job3 -w &amp;quot;done(job1) &amp;amp;&amp;amp; done(job2)&amp;quot; command3 # choose best model
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If, on the other hand, you are fitting a lot of models in step 2, you should
+consider using &lt;a href=&#34;https://scicomp.ethz.ch/wiki/Job_arrays&#34; target=&#34;_blank&#34;&gt;job arrays&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;bsub -J job[1-10] command
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;-J job[1-10]&lt;/code&gt; defines the name of the array and the number of jobs it
+will contain (in this case: 10).
+You then need to get the JOBID of this job array. This is
+because the JOBID will be the same for the whole job array, but different subjobs
+will have different names.
+To get the JOBID, one way is to use &lt;code&gt;bjobs&lt;/code&gt; and just copy the JOBID (let&amp;rsquo;s say: 94709747).
+Then, you can write:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;bsub -w &amp;quot;numdone(94709747,*)&amp;quot; -J job2 command2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;However, if you prefer (I would) to have the JOBID extracted automatically, then
+this is what you want:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;JOBID=$(bsub command1 | awk &#39;/is submitted/{print substr($2, 2, length($2)-2);}&#39;)
+if [ -n &amp;quot;$JOBID&amp;quot; ]; then
+        bsub -w &amp;quot;numdone($JOBID,*)&amp;quot; command2
+fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The first line of code will run the job it contains &lt;em&gt;and&lt;/em&gt; extract the job&amp;rsquo;s ID.
+Filling two needs with one deed 💪.
+Oh wait, but what if I need to pass the array index as an argument to a function?
+That can also be done! You can pass &lt;code&gt;$LSB_JOBINDEX&lt;/code&gt; as a command-line argument.
+Note the backslash &lt;code&gt;\&lt;/code&gt; before &lt;code&gt;$LSB_JOBINDEX&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;bsub -J &amp;quot;job[1-10]&amp;quot; matlab -nodisplay -singleCompThread -r &amp;quot;my_function(\$LSB_JOBINDEX)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;a-modest-template&#34;&gt;A modest template&lt;/h2&gt;
+
+&lt;p&gt;Here is a template of the type of scripts I like. Notice the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Use of &lt;code&gt;$1&lt;/code&gt;: Taking in arguments from the command line is, in my opinion, really nice.
+It saves you the time of opening &lt;a href=&#34;https://en.wikipedia.org/wiki/Vim_(text_editor)&#34; target=&#34;_blank&#34;&gt;vim&lt;/a&gt;
+and having to edit, save, quit. You just type your arguments and click enter!&lt;/li&gt;
+&lt;li&gt;Use of &lt;code&gt;echo&lt;/code&gt; with if/else statements to check if everything is running as planned.&lt;/li&gt;
+&lt;li&gt;Requirement of user confirmation. Some might find this annoying, but I have
+often realized, when submitting the job, that something was wrong.
+Requiring me to type in a confirmatory &amp;ldquo;yes&amp;rdquo; adds an extra check.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This script reconstructs the steps we had seen before, but with multiple iterations
+added, hence the for loop.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/bash
+
+# Loading matlab module
+echo loading matlab module...
+module load new matlab/R2017b
+
+# Necessary input
+arg1=$1 # takes in first input argument from command line
+arg2=$2 # second input argument from command line
+niter=50
+
+# Checking important arguments
+if [ &amp;quot;$arg2&amp;quot; == &amp;quot;&#39;this&#39;&amp;quot; ] || [ &amp;quot;$arg2&amp;quot; == &amp;quot;&#39;that&#39;&amp;quot; ]; then
+  echo &amp;quot;Argument 2 recognized!&amp;quot;
+else
+  echo &amp;quot;Argument 2 NOT recognized! You will get an error!&amp;quot;
+fi
+
+# Run your loop
+read -p &amp;quot;Run your cool script? [y: yes; n: no]&amp;quot; -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    for ((i = 1; i &amp;lt;= $niter; i++)); do
+        # Run setup
+        if [[ $i -eq 1 ]]; then
+          bsub -J &amp;quot;Setup$i&amp;quot; matlab -singleCompThread -nodisplay -r &amp;quot;setup($arg1,$arg2,$i)&amp;quot;
+        else
+          last_iter=$((i-1))
+          bsub -J &amp;quot;Setup$i&amp;quot; -w &amp;quot;done(saveBest$last_iter)&amp;quot; matlab -singleCompThread -nodisplay -r &amp;quot;setup($arg1,$arg2,$i)&amp;quot;
+        fi
+        # Fit your models
+         bsub -J &amp;quot;fitModels$i&amp;quot; -w &amp;quot;done(Setup$i)&amp;quot; matlab -singleCompThread -nodisplay -r &amp;quot;fit_models($arg1,$arg2,$i)&amp;quot;
+        # Save your best model
+        bsub -J &amp;quot;saveBest$i&amp;quot; -w &amp;quot;done(fitModels$i)&amp;quot; matlab -singleCompThread -nodisplay -r &amp;quot;save_best_model($arg1,$arg2,$i)&amp;quot;
+    done
+fi
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Compare that to a version which uses job arrays:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/bash
+
+# Loading matlab module
+echo loading matlab module...
+module load new matlab/R2017b
+
+# Necessary input
+arg1=$1 # takes in first input argument from command line
+arg2=$2 # second input argument from command line
+niter=50
+
+# Run your loop
+read -p &amp;quot;Run your cool script? [y: yes; n: no]&amp;quot; -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    for ((i = 1; i &amp;lt;= $niter; i++)); do
+        # Run setup
+        if [[ $i -eq 1 ]]; then
+          bsub -J &amp;quot;Setup$i&amp;quot; matlab -singleCompThread -nodisplay -r &amp;quot;setup($arg1,$arg2,$i)&amp;quot;
+        else
+          last_iter=$((i-1))
+          bsub -J &amp;quot;Setup$i&amp;quot; -w &amp;quot;done(saveBest$last_iter)&amp;quot; matlab -singleCompThread -nodisplay -r &amp;quot;setup($arg1,$arg2,$i)&amp;quot;
+        fi
+        # Fit your models and extract JOBID from job array
+        max_sim=$((nparam-i+1))
+        JOBID=$(bsub -J &amp;quot;fitModels$i[1-$max_sim]&amp;quot; -w &amp;quot;done(Setup$i)&amp;quot; matlab -singleCompThread -nodisplay -r &amp;quot;fit_models($arg1,$arg2,\$LSB_JOBINDEX)&amp;quot; | awk &#39;/is submitted/{print substr($2, 2, length($2)-2);}&#39;)
+        # Save the best model using JOBID as a dependency
+        if [ -n &amp;quot;$JOBID&amp;quot; ]; then
+          bsub -J &amp;quot;saveBest$i&amp;quot; -w &amp;quot;numdone($JOBID,*)&amp;quot; matlab -singleCompThread -nodisplay -r &amp;quot;save_best_model($arg1,$arg2,$i)&amp;quot;
+        fi
+    done
+fi
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;other-useful-resources&#34;&gt;Other useful resources&lt;/h2&gt;
+
+&lt;p&gt;To use Euler, you&amp;rsquo;ll find yourself googling &lt;em&gt;a lot&lt;/em&gt; of bash commands. In addition,
+figuring out how vim works can also be overwhelming in the beginning.
+To ease the pain, here are a few nice cheat sheets:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://devhints.io/bash&#34; target=&#34;_blank&#34;&gt;Bash scripting  cheat sheet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://devhints.io/bash&#34; target=&#34;_blank&#34;&gt;Vim cheat sheet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p style=&#34;text-align: center;&#34;&gt;
+Happy computations ! 👾👾👾
+&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Freeview from FreeSurfer</title>

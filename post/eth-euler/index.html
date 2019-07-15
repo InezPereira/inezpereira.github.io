@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.1.0">
+  <meta name="generator" content="Hugo 0.54.0" />
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Inês Pereira">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="🖍 Nota bene: You will need to be an ETH member to use Euler. However, this post might still be useful if you happen to be working on another cluster which uses the LSF batch system. Also relevant: I am currently mainly using MATLAB to run my simulations, so you&rsquo;ll find some MATLAB specific advice. For Python specifics, check out this page. ⌛️ TL;DR: check out the end of the blog post for a practical suggestion on how to structure your job submission scripts.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://inespereira.com/post/eth-euler/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="hsl(339, 90%, 68%)">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" disabled>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark">
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono">
+  
+
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-137602938-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+  <link rel="alternate" href="https://inespereira.com/index.xml" type="application/rss+xml" title="Purkinje Delirium">
+  <link rel="feed" href="https://inespereira.com/index.xml" type="application/rss+xml" title="Purkinje Delirium">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://inespereira.com/post/eth-euler/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Purkinje Delirium">
+  <meta property="og:url" content="https://inespereira.com/post/eth-euler/">
+  <meta property="og:title" content="A beginner&#39;s guide to ETH&#39;s Euler | Purkinje Delirium">
+  <meta property="og:description" content="🖍 Nota bene: You will need to be an ETH member to use Euler. However, this post might still be useful if you happen to be working on another cluster which uses the LSF batch system. Also relevant: I am currently mainly using MATLAB to run my simulations, so you&rsquo;ll find some MATLAB specific advice. For Python specifics, check out this page. ⌛️ TL;DR: check out the end of the blog post for a practical suggestion on how to structure your job submission scripts."><meta property="og:image" content="https://inespereira.com/post/eth-euler/featured.jpg">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-07-03T15:21:13&#43;02:00">
+  
+  <meta property="article:modified_time" content="2019-07-03T15:21:13&#43;02:00">
+  
+
+  
+
+  
+
+  <title>A beginner&#39;s guide to ETH&#39;s Euler | Purkinje Delirium</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Purkinje Delirium</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#posts">
+            
+            <span>Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#featured">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/tutorial/">
+            
+            <span>Tutorials</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-header d-xl-none">
+  <div class="featured-image" style="background-image: url('/post/eth-euler/featured_hu0ea6e0771632d51ad683e930f93d8490_109508_800x0_resize_q90_lanczos.jpg');"></div>
+  <span class="article-header-caption">Portrait of Leonhard Euler by Jakob Emanuel Handmann (1753)</span>
+</div>
+
+
+<div class="container-fluid split-header d-none d-xl-block">
+  <div class="row">
+    <div class="col-6">
+      <div class="split-header-content">
+        <h1 itemprop="name">A beginner&#39;s guide to ETH&#39;s Euler</h1>
+
+        
+
+        
+
+
+
+<meta content="2019-07-03 15:21:13 &#43;0200 CEST" itemprop="datePublished">
+<meta content="2019-07-03 15:21:13 &#43;0200 CEST" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemscope itemprop="author" itemtype="http://schema.org/Person">
+      <span itemprop="name">
+        
+
+      
+      
+      <a href="/authors/in%C3%AAs-pereira/">Inês Pereira</a></span></span>
+  
+
+
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Jul 3, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    10 min read
+  </span>
+  
+
+  
+  
+
+  
+
+  
+
+</div>
+
+
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+        
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=A%20beginner%27s%20guide%20to%20ETH%27s%20Euler&amp;url=https%3a%2f%2finespereira.com%2fpost%2feth-euler%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2finespereira.com%2fpost%2feth-euler%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2finespereira.com%2fpost%2feth-euler%2f&amp;title=A%20beginner%27s%20guide%20to%20ETH%27s%20Euler"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2finespereira.com%2fpost%2feth-euler%2f&amp;title=A%20beginner%27s%20guide%20to%20ETH%27s%20Euler"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=A%20beginner%27s%20guide%20to%20ETH%27s%20Euler&amp;body=https%3a%2f%2finespereira.com%2fpost%2feth-euler%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="split-header-image">
+        <img src="/post/eth-euler/featured_hu0ea6e0771632d51ad683e930f93d8490_109508_680x500_fill_q90_lanczos_smart1.jpg" itemprop="image" alt="">
+        <span class="article-header-caption">Portrait of Leonhard Euler by Jakob Emanuel Handmann (1753)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-container d-xl-none">
+  <h1 itemprop="name">A beginner&#39;s guide to ETH&#39;s Euler</h1>
+
+  
+
+  
+
+
+
+<meta content="2019-07-03 15:21:13 &#43;0200 CEST" itemprop="datePublished">
+<meta content="2019-07-03 15:21:13 &#43;0200 CEST" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemscope itemprop="author" itemtype="http://schema.org/Person">
+      <span itemprop="name">
+        
+
+      
+      
+      <a href="/authors/in%C3%AAs-pereira/">Inês Pereira</a></span></span>
+  
+
+
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Jul 3, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    10 min read
+  </span>
+  
+
+  
+  
+
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=A%20beginner%27s%20guide%20to%20ETH%27s%20Euler&amp;url=https%3a%2f%2finespereira.com%2fpost%2feth-euler%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2finespereira.com%2fpost%2feth-euler%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2finespereira.com%2fpost%2feth-euler%2f&amp;title=A%20beginner%27s%20guide%20to%20ETH%27s%20Euler"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2finespereira.com%2fpost%2feth-euler%2f&amp;title=A%20beginner%27s%20guide%20to%20ETH%27s%20Euler"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=A%20beginner%27s%20guide%20to%20ETH%27s%20Euler&amp;body=https%3a%2f%2finespereira.com%2fpost%2feth-euler%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p>🖍 <em>Nota bene</em>: You will need to be an ETH member to use Euler. However, this
+post might still be useful if you happen to be working on another cluster which
+uses the <a href="https://en.wikipedia.org/wiki/Platform_LSF" target="_blank">LSF</a>  batch system. Also relevant: I am currently mainly using MATLAB to run my simulations, so you&rsquo;ll find some MATLAB specific advice.
+For Python specifics, check out <a href="https://scicomp.ethz.ch/wiki/Python" target="_blank">this page</a>.
+<!-- Also note that [GPUs are only provided in the Leohnard cluster](https://scicomp.ethz.ch/wiki/Getting_started_with_GPUs)
+and access is restricted to shareholders. --></p>
+
+<p>⌛️ <strong>TL;DR</strong>: check out the end of the blog post for a practical suggestion on how
+to structure your job submission scripts.</p>
+
+<h2 id="euler">Euler ?</h2>
+
+<p><a href="https://scicomp.ethz.ch/w/images/a/ad/Getting_started_with_Euler_(September_2016).pdf" target="_blank">Euler</a>
+is the high performance computing cluster at ETH Zurich.
+<!-- Its name stands for *Erweiterbarer, Umweltfreundlicher, Leistungsfähiger ETH Rechner*. -->
+Like its predecessors, Euler follows a shareholder model, and is for the most part financed by its users.
+These &ldquo;shareholders&rdquo; then receive a share of the cluster&rsquo;s resources (<em>i.e</em> CPU time), which is proportional to their investment.
+However, a small share of Euler is financed by the IT Services and is open to all ETH members.</p>
+
+<p style="text-align: center;">
+And that's a huge hooray for students!
+</p>
+
+<p>Euler is really a <em>great</em> resource, but can be associated with a steep learning curve,
+especially if you are not used to working with a terminal and all that jazz.</p>
+
+<p>In this post, we&rsquo;ll go through:</p>
+
+<ul>
+<li>How to run your first job</li>
+<li>Some advanced tricks</li>
+<li>A template for future jobs</li>
+</ul>
+
+<h2 id="running-a-simple-job">Running a simple job</h2>
+
+<h3 id="connecting-to-euler">Connecting to Euler</h3>
+
+<p>The first thing you need to do is to connect to Euler.
+To do that, you either need to be within the ETH network or connected via VPN.
+The only requirement to login is a valid NETHZ account (no forms to fill out 🎉).
+Open a terminal and type:</p>
+
+<pre><code class="language-bash">ssh username@euler.ethz.ch
+</code></pre>
+
+<p>Now type in your NETHZ password&hellip; and you&rsquo;re in!
+If this is the first time you&rsquo;re logging in, the only extra step is to accept the
+cluster&rsquo;s usage rights.</p>
+
+<h3 id="file-transfer">File transfer</h3>
+
+<p>To run your jobs, you&rsquo;ll need to transfer your scripts and data to the cluster.
+To do so, you can use the <code>scp</code> command. The general use is as follows:</p>
+
+<pre><code class="language-bash">scp [options] source destination
+</code></pre>
+
+<!-- There are some difference between the two commands, but I'll let you read more
+about [here](https://stackoverflow.com/questions/20244585/how-does-scp-differ-from-rsync)
+and [here](https://superuser.com/questions/393608/difference-between-scp-and-rsync). -->
+
+<!-- For now, let's focus on the `scp` command.  -->
+
+<p>Specifically, what you&rsquo;ll need to type is:</p>
+
+<pre><code class="language-bash">scp file username@euler.ethz.ch:path/to/destination # from local computer to Euler
+scp username@euler.ethz.ch:path/to/source/file path/to/destination # from Euler to local computer
+</code></pre>
+
+<p>To transfer directories, the option <code>-r</code> needs to be used:</p>
+
+<pre><code class="language-bash">scp -r directory username@euler.ethz.ch:path/to/destination # from local computer to Euler
+scp -r username@euler.ethz.ch:path/to/source/directory path/to/destination # from Euler to local computer
+</code></pre>
+
+<p>You&rsquo;ll find that acquainting yourself with bash scripting will come in handy for
+this type of commands. Check out the cheat sheet I left in the end of the blog post
+for just that!</p>
+
+<h3 id="a-word-on-data-storage">A word on data storage</h3>
+
+<p>When it comes to personal storage, every user has access to two options:</p>
+
+<pre><code class="language-bash">HOME=/cluster/home/username
+SCRATCH=/cluster/scratch/username
+</code></pre>
+
+<p>Home is a safe long-term storage for important data. Only <em>you</em> can access it and
+the content is saved every hour (snapshot) and every night (tape backup).
+You are allowed 16 GB of data or a maximum of 100 000 files.
+<strong>This is the directory (folder) you&rsquo;ll automatically find yourself in once you login.</strong></p>
+
+<p>Scratch, on the other hand, is designed as a fast short-term storage. There is
+<em>no</em> backup and ETH will warn you that it is <em>purged on a regular basis</em>. Your disk
+quota in scratch rises to 2.5 TB and a maximum of 1 000 000 files.</p>
+
+<p>To check how far away (or how close&hellip;) you are from your quota, use the command
+<code>lquota</code>:</p>
+
+<pre><code class="language-bash">lquota
++-----------------------------+-------------+------------------+------------------+------------------+
+| Storage location:           | Quota type: | Used:            | Soft quota:      | Hard quota:      |
++-----------------------------+-------------+------------------+------------------+------------------+
+| /cluster/home/user          | space       |          8.85 GB |         17.18 GB |         21.47 GB |
+| /cluster/home/user          | files       |            25610 |            80000 |           100000 |
++-----------------------------+-------------+------------------+------------------+------------------+
+| /cluster/shadow             | space       |          4.10 kB |          2.15 GB |          2.15 GB |
+| /cluster/shadow             | files       |                2 |            50000 |            50000 |
++-----------------------------+-------------+------------------+------------------+------------------+
+| /cluster/scratch/user       | space       |        237.57 kB |          2.50 TB |          2.70 TB |
+| /cluster/scratch/user       | files       |               29 |          1000000 |          1500000 |
++-----------------------------+-------------+------------------+------------------+------------------+
+</code></pre>
+
+<p>For more information on data storage (<em>e.g.</em> options for shareholders), be sure
+to check out this <a href="https://scicomp.ethz.ch/w/images/a/ad/Getting_started_with_Euler_(September_2016).pdf" target="_blank">presentation</a>
+or this <a href="https://scicomp.ethz.ch/wiki/Storage_systems" target="_blank">page</a>.</p>
+
+<h3 id="using-euler">Using Euler</h3>
+
+<p>All right! Now we&rsquo;re ready to start using the cluster!
+And it all boils down to this:</p>
+
+<pre><code>bsub [LSF options] job
+</code></pre>
+
+<p>Of course, the tricky part is to figure out how to use the options and what
+constitutes a job.
+Well, here are a few options I find particularly useful (for more, check out
+  <a href="https://scicomp.ethz.ch/wiki/LSF_mini_reference" target="_blank">this reference</a>):</p>
+
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>-W HH:MM</code></td>
+<td align="left">Allowed duration for job. Default: 04:00 hours.</td>
+</tr>
+
+<tr>
+<td><code>-R &quot;rusage[mem=X]&quot;</code></td>
+<td align="left">Memory (in MB per core) required. Default: X = 1024 MB.</td>
+</tr>
+
+<tr>
+<td><code>-J jobname</code></td>
+<td align="left">Assigns name to job. Not necessarily unique!</td>
+</tr>
+
+<tr>
+<td><code>-w &quot;depcond&quot;</code></td>
+<td align="left">Sets dependencies between jobs. More on this below.</td>
+</tr>
+
+<tr>
+<td><code>-r</code></td>
+<td align="left">If your node crashes, LSF will re-run the job on another node.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Now mind you that a job can be:</p>
+
+<ul>
+<li>a Linux command: <code>bsub [LSF options] command</code></li>
+<li>a shell script: <code>bsub [LSF options] &lt; script</code></li>
+<li>a program: <code>bsub [LSF options] path/to/program</code></li>
+</ul>
+
+<!-- So, as you can see, different types of jobs may imply a slightly different syntax. -->
+
+<p>Ok, so far so good. Now, to use MATLAB, you&rsquo;ll first need to load it.</p>
+
+<pre><code class="language-bash">module load new matlab/R2018a
+</code></pre>
+
+<p>Notice that I am loading a specific version of MATLAB. For more information on how to
+configure the MATLAB version you want to run, check out <a href="https://scicomp.ethz.ch/wiki/MATLAB" target="_blank">this link</a>.</p>
+
+<p>Once that&rsquo;s done, let&rsquo;s say you would like to fit a model using a script you wrote beforehand.
+To submit your job, you then type:</p>
+
+<pre><code class="language-bash">bsub -J &quot;fitModel&quot; matlab -singleCompThread -nodisplay -r &quot;fit_model&quot;
+</code></pre>
+
+<p>Pardon? What are all <em>those</em> options? It&rsquo;s fairly easy:</p>
+
+<ul>
+<li><code>-singleCompThread</code>: forces MATLAB to use only one thread for its computations
+(prevents MATLAB from overloading the compute nodes).</li>
+<li><code>-nodisplay</code>: just explicitly tell MATLAB no graphical display is available.</li>
+</ul>
+
+<p>⚠️ <strong>#ProTip</strong>: no <code>.m</code> at the end of your script name (bsub doesn’t require that you pass the file extension).
+That has once cost me an embarrassing amount of time.</p>
+
+<p>You have submitted your job and get back:</p>
+
+<pre><code class="language-bash">Generic job.
+Job &lt;94709747&gt; is submitted to queue &lt;normal.4h&gt;.
+</code></pre>
+
+<p>That looks good. To manage your jobs, you&rsquo;ll then need two new commands:
+<code>bjobs</code> and <code>bkill</code>, which let you monitor or kill all jobs or specific jobs
+(for more details, read <a href="https://scicomp.ethz.ch/wiki/LSF_mini_reference" target="_blank">this reference</a>).</p>
+
+<pre><code class="language-bash">bjobs
+&gt; JOBID      USER   STAT  QUEUE      FROM_HOST   EXEC_HOST   JOB_NAME   SUBMIT_TIME
+&gt; 94709747   jdoe   RUN   normal.4h   euler01  eu-c7-106-0  fitModel   Jul  3 07:19
+
+bkill 0 # terminate all jobs
+&gt; Job &lt;94709747&gt; is being terminated
+</code></pre>
+
+<p>An alternative to <code>bjobs</code> is <a href="https://scicomp.ethz.ch/wiki/Using_the_batch_system#bbjobs" target="_blank">bbjobs</a>
+(aka better bjobs).</p>
+
+<h2 id="more-advanced-tricks">More advanced tricks</h2>
+
+<p>Let&rsquo;s take things up a notch. Let&rsquo;s say that you need to run jobs which somehow
+depend on each other. The example I&rsquo;ll use here is a greedy feature selection
+algorithm. Don&rsquo;t mind the details, the important thing is you need to do your
+computations in three stages:</p>
+
+<ol>
+<li>Run a setup function (e.g. restructure some folders)</li>
+<li>Train your models</li>
+<li>Choose the best model</li>
+</ol>
+
+<p>Now that means that you only want step 2 to kick in once the setup is ready.
+That&rsquo;s called <a href="https://scicomp.ethz.ch/wiki/Job_chaining" target="_blank">job chaining</a> and can
+be done as follows:</p>
+
+<pre><code class="language-bash">bsub -J job1 command1
+bsub -J job2 -w &quot;done(job1)&quot; command2
+bsub -J job3 -w &quot;done(job2)&quot; command3
+</code></pre>
+
+<p>Note however that the condition for <code>job2</code> is only fulfilled if <code>job1</code> is
+completed successfully. If, for some reason, <code>job1</code> crashes or is killed because
+it reached the runtime or memory limit, then the dependency for <code>job2</code> is never
+true and <code>job2</code> will stand, pending, forever&hellip;
+If you actually, for some heartless reason, don&rsquo;t really care what happens to
+<code>job1</code>, then you should write:</p>
+
+<pre><code class="language-bash">bsub -J job1 command1
+bsub -J job2 -w &quot;ended(job1)&quot; command2
+</code></pre>
+
+<p>If step 2 involves a suite of models and you want to only start step 3
+once <em>all</em> models in step 2 are finished, then you might run into a problem.</p>
+
+<p>If you only have two models and don&rsquo;t mind writing out all the dependencies, you
+can opt for:</p>
+
+<pre><code class="language-bash">bsub -J job1 command1 # train model 1
+bsub -J job2 command2 # train model 2
+bsub -J job3 -w &quot;done(job1) &amp;&amp; done(job2)&quot; command3 # choose best model
+</code></pre>
+
+<p>If, on the other hand, you are fitting a lot of models in step 2, you should
+consider using <a href="https://scicomp.ethz.ch/wiki/Job_arrays" target="_blank">job arrays</a>.</p>
+
+<pre><code class="language-bash">bsub -J job[1-10] command
+</code></pre>
+
+<p><code>-J job[1-10]</code> defines the name of the array and the number of jobs it
+will contain (in this case: 10).
+You then need to get the JOBID of this job array. This is
+because the JOBID will be the same for the whole job array, but different subjobs
+will have different names.
+To get the JOBID, one way is to use <code>bjobs</code> and just copy the JOBID (let&rsquo;s say: 94709747).
+Then, you can write:</p>
+
+<pre><code class="language-bash">bsub -w &quot;numdone(94709747,*)&quot; -J job2 command2
+</code></pre>
+
+<p>However, if you prefer (I would) to have the JOBID extracted automatically, then
+this is what you want:</p>
+
+<pre><code class="language-bash">JOBID=$(bsub command1 | awk '/is submitted/{print substr($2, 2, length($2)-2);}')
+if [ -n &quot;$JOBID&quot; ]; then
+        bsub -w &quot;numdone($JOBID,*)&quot; command2
+fi
+</code></pre>
+
+<p>The first line of code will run the job it contains <em>and</em> extract the job&rsquo;s ID.
+Filling two needs with one deed 💪.
+Oh wait, but what if I need to pass the array index as an argument to a function?
+That can also be done! You can pass <code>$LSB_JOBINDEX</code> as a command-line argument.
+Note the backslash <code>\</code> before <code>$LSB_JOBINDEX</code>:</p>
+
+<pre><code class="language-bash">bsub -J &quot;job[1-10]&quot; matlab -nodisplay -singleCompThread -r &quot;my_function(\$LSB_JOBINDEX)&quot;
+</code></pre>
+
+<h2 id="a-modest-template">A modest template</h2>
+
+<p>Here is a template of the type of scripts I like. Notice the following:</p>
+
+<ul>
+<li>Use of <code>$1</code>: Taking in arguments from the command line is, in my opinion, really nice.
+It saves you the time of opening <a href="https://en.wikipedia.org/wiki/Vim_(text_editor)" target="_blank">vim</a>
+and having to edit, save, quit. You just type your arguments and click enter!</li>
+<li>Use of <code>echo</code> with if/else statements to check if everything is running as planned.</li>
+<li>Requirement of user confirmation. Some might find this annoying, but I have
+often realized, when submitting the job, that something was wrong.
+Requiring me to type in a confirmatory &ldquo;yes&rdquo; adds an extra check.</li>
+</ul>
+
+<p>This script reconstructs the steps we had seen before, but with multiple iterations
+added, hence the for loop.</p>
+
+<pre><code class="language-bash">#!/bin/bash
+
+# Loading matlab module
+echo loading matlab module...
+module load new matlab/R2017b
+
+# Necessary input
+arg1=$1 # takes in first input argument from command line
+arg2=$2 # second input argument from command line
+niter=50
+
+# Checking important arguments
+if [ &quot;$arg2&quot; == &quot;'this'&quot; ] || [ &quot;$arg2&quot; == &quot;'that'&quot; ]; then
+  echo &quot;Argument 2 recognized!&quot;
+else
+  echo &quot;Argument 2 NOT recognized! You will get an error!&quot;
+fi
+
+# Run your loop
+read -p &quot;Run your cool script? [y: yes; n: no]&quot; -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    for ((i = 1; i &lt;= $niter; i++)); do
+        # Run setup
+        if [[ $i -eq 1 ]]; then
+          bsub -J &quot;Setup$i&quot; matlab -singleCompThread -nodisplay -r &quot;setup($arg1,$arg2,$i)&quot;
+        else
+          last_iter=$((i-1))
+          bsub -J &quot;Setup$i&quot; -w &quot;done(saveBest$last_iter)&quot; matlab -singleCompThread -nodisplay -r &quot;setup($arg1,$arg2,$i)&quot;
+        fi
+        # Fit your models
+         bsub -J &quot;fitModels$i&quot; -w &quot;done(Setup$i)&quot; matlab -singleCompThread -nodisplay -r &quot;fit_models($arg1,$arg2,$i)&quot;
+        # Save your best model
+        bsub -J &quot;saveBest$i&quot; -w &quot;done(fitModels$i)&quot; matlab -singleCompThread -nodisplay -r &quot;save_best_model($arg1,$arg2,$i)&quot;
+    done
+fi
+
+</code></pre>
+
+<p>Compare that to a version which uses job arrays:</p>
+
+<pre><code class="language-bash">#!/bin/bash
+
+# Loading matlab module
+echo loading matlab module...
+module load new matlab/R2017b
+
+# Necessary input
+arg1=$1 # takes in first input argument from command line
+arg2=$2 # second input argument from command line
+niter=50
+
+# Run your loop
+read -p &quot;Run your cool script? [y: yes; n: no]&quot; -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    for ((i = 1; i &lt;= $niter; i++)); do
+        # Run setup
+        if [[ $i -eq 1 ]]; then
+          bsub -J &quot;Setup$i&quot; matlab -singleCompThread -nodisplay -r &quot;setup($arg1,$arg2,$i)&quot;
+        else
+          last_iter=$((i-1))
+          bsub -J &quot;Setup$i&quot; -w &quot;done(saveBest$last_iter)&quot; matlab -singleCompThread -nodisplay -r &quot;setup($arg1,$arg2,$i)&quot;
+        fi
+        # Fit your models and extract JOBID from job array
+        max_sim=$((nparam-i+1))
+        JOBID=$(bsub -J &quot;fitModels$i[1-$max_sim]&quot; -w &quot;done(Setup$i)&quot; matlab -singleCompThread -nodisplay -r &quot;fit_models($arg1,$arg2,\$LSB_JOBINDEX)&quot; | awk '/is submitted/{print substr($2, 2, length($2)-2);}')
+        # Save the best model using JOBID as a dependency
+        if [ -n &quot;$JOBID&quot; ]; then
+          bsub -J &quot;saveBest$i&quot; -w &quot;numdone($JOBID,*)&quot; matlab -singleCompThread -nodisplay -r &quot;save_best_model($arg1,$arg2,$i)&quot;
+        fi
+    done
+fi
+
+</code></pre>
+
+<h2 id="other-useful-resources">Other useful resources</h2>
+
+<p>To use Euler, you&rsquo;ll find yourself googling <em>a lot</em> of bash commands. In addition,
+figuring out how vim works can also be overwhelming in the beginning.
+To ease the pain, here are a few nice cheat sheets:</p>
+
+<ul>
+<li><a href="https://devhints.io/bash" target="_blank">Bash scripting  cheat sheet</a></li>
+<li><a href="https://devhints.io/bash" target="_blank">Vim cheat sheet</a></li>
+</ul>
+
+<p style="text-align: center;">
+Happy computations ! 👾👾👾
+</p>
+
+    </div>
+
+    
+
+
+
+
+
+    
+      
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+
+      
+      
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<div class="container">
+  <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d7381f2d79e6271d4da28f474f49096c.js"></script>
+
+  </body>
+</html>
+
