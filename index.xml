@@ -514,6 +514,14 @@ thorough, I had a harder time navigating the website than I expected.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; ./freeview.sh
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;For more information on how to use the &lt;code&gt;freeview&lt;/code&gt; command, type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;freeview --help
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You&amp;rsquo;ll get a list of the available sub-options to make the most out of your image
+visualization!&lt;/p&gt;
+
 &lt;p&gt;All right, we have opened Freeview and we&amp;rsquo;re ready to start interacting with the GUI!&lt;/p&gt;
 
 &lt;h2 id=&#34;2-check-out-the-available-freeview-keyboard-shortcuts&#34;&gt;2. Check out the available Freeview keyboard shortcuts!&lt;/h2&gt;
@@ -700,7 +708,8 @@ found by experimenting are:&lt;/p&gt;
 &lt;/table&gt;
 
 &lt;p&gt;That concludes this short tutorial about Freeview!
-If you want to read/know more, the full Freeview Guide can be found &lt;a href=&#34;https://surfer.nmr.mgh.harvard.edu/fswiki/FreeviewGuide&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+If you want to read/know more, the full Freeview Guide can be found &lt;a href=&#34;https://surfer.nmr.mgh.harvard.edu/fswiki/FreeviewGuide&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.
+Also, check out this &lt;a href=&#34;https://www.youtube.com/watch?v=Mv-ECowxq2o&#34; target=&#34;_blank&#34;&gt;cool Freeview demo&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;!-- https://discourse.gohugo.io/t/linking-to-static-files-with-hugo/8282 --&gt;&lt;/p&gt;
 </description>
