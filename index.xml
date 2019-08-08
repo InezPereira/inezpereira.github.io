@@ -320,6 +320,24 @@ Note the backslash &lt;code&gt;\&lt;/code&gt; before &lt;code&gt;$LSB_JOBINDEX&l
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;bsub -J &amp;quot;job[1-10]&amp;quot; matlab -nodisplay -singleCompThread -r &amp;quot;my_function(\$LSB_JOBINDEX)&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;💣 Ok, now an even harder thing to do would be to set a dependency on multiple
+job arrays. That can also be done, with a few bash tricks:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;dep_cond=&amp;quot;&amp;quot; # create a variable to store the full dependency
+for i in {1..50}; do
+  JOBID=$(bsub -J &amp;quot;job$i[1-10]&amp;quot; matlab -nodisplay -singleCompThread -r &amp;quot;my_function(\$LSB_JOBINDEX)&amp;quot; | awk &#39;/is submitted/{print substr($2, 2, length($2)-2);}&#39;)
+  dep_cond+=&amp;quot; &amp;amp;&amp;amp; numdone($JOBID,*)&amp;quot; # add new dependencies
+done
+
+dep_cond=${dep_cond:4} # remove leading &amp;quot; &amp;amp;&amp;amp; &amp;quot;
+
+bsub -w &amp;quot;$dep_cond&amp;quot; matlab -singleCompThread -nodisplay -r &amp;quot;my_function2()&amp;quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A huge thank you to the Euler cluster support for this one! In particular to
+&lt;a href=&#34;https://ethz.ch/services/en/organisation/departments/it-services/people/person-detail.html?persid=88087&#34; target=&#34;_blank&#34;&gt;Oliver Byrde&lt;/a&gt;!&lt;/p&gt;
+
 &lt;h2 id=&#34;a-modest-template&#34;&gt;A modest template&lt;/h2&gt;
 
 &lt;p&gt;Here is a template of the type of scripts I like. Notice the following:&lt;/p&gt;
