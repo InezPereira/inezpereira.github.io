@@ -6,8 +6,322 @@
     <description>Recent content in Purkinje Delirium on Purkinje Delirium</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 03 Jul 2019 15:21:13 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 07 Feb 2020 11:12:09 +0700</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Data Visualization</title>
+      <link>https://inespereira.com/post/data-visualization/</link>
+      <pubDate>Fri, 07 Feb 2020 11:12:09 +0700</pubDate>
+      
+      <guid>https://inespereira.com/post/data-visualization/</guid>
+      <description>
+
+&lt;p&gt;Scientists are expected to be effective communicators, but that can be a little
+tricky without a few conscious tricks up your sleeve.&lt;/p&gt;
+
+&lt;p&gt;Visualization, in particular, can be a very powerful means of conveying information,
+be it in your papers, posters, presentations, chapters, or blogposts.&lt;/p&gt;
+
+&lt;p&gt;🖍 &lt;em&gt;Nota bene&lt;/em&gt;: In this post, I summarize a few recommendations from various sources
+that I, personally, found very useful.
+For a more in-depth take on the following and other points, do consult the series
+of Points of View columns published in &lt;em&gt;Nature Methods&lt;/em&gt;.
+A collection of these can be found &lt;a href=&#34;https://www.scientificamerican.com/products/nature-products/nature-collections-visual-strategies-for-biological-data/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.
+Another great online read can be found &lt;a href=&#34;https://www.knowablemagazine.org/article/mind/2019/science-data-visualization&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Please note that all of these recommendations
+are meant to be general and that one should always take into account any
+field-specific conventions.&lt;/p&gt;
+
+&lt;h2 id=&#34;color&#34;&gt;Color&lt;/h2&gt;
+
+&lt;p&gt;There are a few things to know about color.&lt;/p&gt;
+
+&lt;p&gt;First, color varies in terms of:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Hue: &amp;ldquo;&lt;em&gt;the attribute we use to classify a color as red or yellow.&lt;/em&gt;&amp;rdquo; [1]&lt;/li&gt;
+&lt;li&gt;Saturation: which &amp;ldquo;&lt;em&gt;describes the neutrality of a color; a red object with
+little or no white is said to be very saturated.&lt;/em&gt;&amp;rdquo; [1]&lt;/li&gt;
+&lt;li&gt;Lightness: which &amp;ldquo;&lt;em&gt;tells us about its relative ordering on the dark-to-light scale.&lt;/em&gt;&amp;rdquo; [1]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Figure 1 shows a way to represent these dimensions:&lt;/p&gt;
+
+&lt;p&gt;&lt;img title=&#34;&#34; src=&#34;color-on-mac.png&#34;/&gt;
+&lt;div style=&#34;text-align: center&#34;&gt;Figure 1: Picking colors.&lt;/div&gt;&lt;/p&gt;
+
+&lt;!-- If you use these dimensions to represent color, then you end up with a three dimensional
+object; for instance, a sphere: --&gt;
+
+&lt;!-- &lt;img title=&#34;&#34; src=&#34;color-sphere.png&#34; alt=&#34;&#34; width=&#34;406&#34; height=&#34;357&#34; /&gt;
+&lt;div style=&#34;text-align: center&#34;&gt;Figure 1: HSL (hue, saturation, lightness) color solid.&lt;/div&gt; --&gt;
+
+&lt;p&gt;Now, when picking colors, these should ideally be discernible in grayscale as well.
+That way, if someone prints your figure in black and white, they still get the message 😊.
+One way to do this is to spiral around the color wheel while varying lightness as well.
+This only works effectively for a limited number of colors: around 6 to 8 [1].
+Past 8, it just becomes harder to find discernible colors.&lt;/p&gt;
+
+&lt;p&gt;As for representing data, color is ill-suited to represent &lt;strong&gt;quantitative data&lt;/strong&gt;, because it is not in principle
+clear how to order different colors. It is, however, appropriate to characterize &lt;strong&gt;categorical&lt;/strong&gt; data.&lt;/p&gt;
+
+&lt;p&gt;While color might make a figure seem nicer, it should be used judiciously.
+Indeed, there are better strategies to compare elements, and these were ranked by
+Cleveland and McGill [2]:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Rank&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Aspect compared&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Position along common scale &lt;img src=&#34;aligned.png&#34; style=&#34;float: right; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Position on the same, but non-aligned scales &lt;img src=&#34;non-aligned.png&#34; style=&#34;float: right; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Length &lt;img src=&#34;length.png&#34; style=&#34;float: right; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Angle  &lt;img src=&#34;angle.png&#34; style=&#34;float: right; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Area &lt;img src=&#34;area.png&#34; style=&#34;float: right; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Volume  &lt;img src=&#34;volume.png&#34; style=&#34;float: right; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Color saturation &lt;img src=&#34;saturation.png&#34; style=&#34;float: right; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Color hue &lt;img src=&#34;hue.png&#34; style=&#34;float: right; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;This made me realize that bar charts are a very effective tool for comparison!&lt;/p&gt;
+
+&lt;h2 id=&#34;a-word-on-color-blindness&#34;&gt;A word on color blindness&lt;/h2&gt;
+
+&lt;p&gt;Given that certain forms of color blindness are quite common, this is something
+that you should definitely take into account. Here is a list of colors from
+Bang Wong, optimized for color-blind individuals [3]:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Color&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Color name&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;RGB&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src=&#34;black.png&#34; style=&#34;float: left; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Black&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0, 0, 0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;img src=&#34;orange.png&#34; style=&#34;float: left; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Orange&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;230, 159, 0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;img src=&#34;sky-blue.png&#34; style=&#34;float: left; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Sky blue&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;86, 180, 233&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;img src=&#34;blueish-green.png&#34; style=&#34;float: left; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Blueish green&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0, 158, 115&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;img src=&#34;yellow.png&#34; style=&#34;float: left; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Yellow&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;240, 228, 66&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;img src=&#34;blue.png&#34; style=&#34;float: left; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Blue&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0, 114, 178&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;img src=&#34;vermillion.png&#34; style=&#34;float: left; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Vermillion&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;213, 94, 0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;img src=&#34;reddish-purple.png&#34; style=&#34;float: left; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Reddish purple&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;204, 121, 167&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;salience&#34;&gt;Salience&lt;/h2&gt;
+
+&lt;p&gt;Now that we&amp;rsquo;ve reviewed a few tricks of how to effectively compare elements, let&amp;rsquo;s
+see how to create contrast, &lt;em&gt;i.e.&lt;/em&gt; visually separate one part of an image from the rest.
+Salience, the visual quality of an object that makes it more prominent, can be
+achieved in several ways [1]:&lt;/p&gt;
+
+&lt;p&gt;&lt;img title=&#34;&#34; src=&#34;salience.png&#34;/&gt;
+&lt;div style=&#34;text-align: center&#34;&gt;Figure 2: Achieving salience.&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;A few notes on this:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sometimes, it might make sense to have multiple views of the same graph, in order to
+emphasize one thing at a time.&lt;/li&gt;
+&lt;li&gt;Make sure the most salient aspect of the figure is also the most relevant!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;gestalt-principles&#34;&gt;Gestalt principles&lt;/h2&gt;
+
+&lt;p&gt;The Gestalt principles of perception are a set of principles which attempt
+to explain why humans naturally perceive objects as being organized or grouped [5].
+There are several principles [4-5]:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Principle&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Remarks&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Similarity&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Similar objects are grouped together &lt;img src=&#34;similarity.png&#34; style=&#34;float: right; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Proximity&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Grouping based on distance (do you see 2 rows?) &lt;img src=&#34;proximity.png&#34; style=&#34;float: right; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Connection&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Lines create a clear connection and groups &lt;img src=&#34;connection.png&#34; style=&#34;float: right; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Enclosure&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enclosure can overcome the other principles. &lt;img src=&#34;enclosure.png&#34; style=&#34;float: right; margin-right: 10px;&#34;/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Notice how you can use enclosure to bring the reader&amp;rsquo;s attention to different parts of a graph
+or table!&lt;/p&gt;
+
+&lt;h2 id=&#34;layout&#34;&gt;Layout&lt;/h2&gt;
+
+&lt;p&gt;A layout has both an aesthetic and clarifying purpose. A simple way to organize your
+slides/posters is to follow the &amp;ldquo;rule of thirds&amp;rdquo; [6].&lt;/p&gt;
+
+&lt;p&gt;&lt;img title=&#34;&#34; src=&#34;powerpoints.png&#34;/&gt;
+&lt;div style=&#34;text-align: center&#34;&gt;Figure 3: Power points.&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;Basically, you can start by dividing the page into 9 equal parts. Objects placed
+along the lines and especially at their intersection points (the so-called power
+points) become more prominent. You can use this to guide the observer.&lt;/p&gt;
+
+&lt;h2 id=&#34;other&#34;&gt;Other&lt;/h2&gt;
+
+&lt;p&gt;The above principles should already help a fair amount, but here are few other
+tips:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Negative space (or whitespace): use it to structure your visualization and
+to let it breathe (no one likes crammed posters&amp;hellip;). For more on this, see [7].&lt;/li&gt;
+&lt;li&gt;Typography: favor sans serif fonts for slides and serif fonts for greater
+lengths of text (&lt;em&gt;e.g.&lt;/em&gt; posters, papers) [8].&lt;/li&gt;
+&lt;li&gt;Overview figures: these can be very helpful! However, keep them simple and
+avoid entering graphs or results at this point [9].&lt;/li&gt;
+&lt;li&gt;🧨 Pie charts: while pie charts can be useful in describing parts of a whole
+and are standard practise in some fields, they have been criticized. Edward Tufte
+once wrote &lt;em&gt;&amp;ldquo;the only design worse than a pie chart is several of them&amp;rdquo;&lt;/em&gt; [10]. To
+compare elements, pie charts rely on differences in area or angle, and we have
+previously seen that there are more effective means of comparison. Hence,
+a bar chart can often be a more effective alternative.
+If you do opt for a pie chart, you might want to know that a specific ordering of
+slices is sometimes recommended. Specifically, Bang Wong writes: &lt;em&gt;&amp;ldquo;place the largest
+wedge to the right of 12 o’clock, the second largest to the left of 12 o’clock
+and the remainder counter-clockwise descending in size&amp;rdquo;&lt;/em&gt; [11]. Graphically:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img title=&#34;&#34; src=&#34;pie-chart.png&#34;/&gt;
+&lt;div style=&#34;text-align: center&#34;&gt;Figure 4: Organizing a pie chart.&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;[1] &lt;a href=&#34;https://www.nature.com/articles/nmeth0810-573&#34; target=&#34;_blank&#34;&gt;B. Wong, &amp;ldquo;Color coding&amp;rdquo;, &lt;em&gt;Nature Methods&lt;/em&gt;, 7:573, 2010.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[2] &lt;a href=&#34;https://science.sciencemag.org/content/229/4716/828&#34; target=&#34;_blank&#34;&gt;W. S. Cleveland, R. McGill, &amp;ldquo;Graphical Perception and Graphical Methods
+for Analyzing Scientific Data&amp;rdquo;, &lt;em&gt;Science&lt;/em&gt;, 229(4716), 1985.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[3] &lt;a href=&#34;https://www.nature.com/articles/nmeth.1618&#34; target=&#34;_blank&#34;&gt;B. Wong, &amp;ldquo;Color blindness&amp;rdquo;, &lt;em&gt;Nature Methods&lt;/em&gt;, 8:441, 2011.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[4] &lt;a href=&#34;https://www.nature.com/articles/nmeth1110-863&#34; target=&#34;_blank&#34;&gt;B. Wong, &amp;ldquo;Gestalt principles (part 1)&amp;rdquo;, &lt;em&gt;Nature Methods&lt;/em&gt;, 7:863, 2010.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[5] &lt;a href=&#34;https://en.wikipedia.org/wiki/Principles_of_grouping&#34; target=&#34;_blank&#34;&gt;Principles of grouping, Wikipedia, [accessed on 10.02.2020]&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[6] &lt;a href=&#34;https://www.nature.com/articles/nmeth.1711&#34; target=&#34;_blank&#34;&gt;B. Wong, &amp;ldquo;Layout&amp;rdquo;, &lt;em&gt;Nature Methods&lt;/em&gt;, 8:783, 2011.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[7] &lt;a href=&#34;https://www.nature.com/articles/nmeth0111-5&#34; target=&#34;_blank&#34;&gt;B. Wong, &amp;ldquo;Negative Space&amp;rdquo;, &lt;em&gt;Nature Methods&lt;/em&gt;, 8:5, 2011.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[8] &lt;a href=&#34;https://www.nature.com/articles/nmeth0411-277&#34; target=&#34;_blank&#34;&gt;B. Wong, &amp;ldquo;Typography&amp;rdquo;, &lt;em&gt;Nature Methods&lt;/em&gt;, 8:277, 2011.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[9] &lt;a href=&#34;https://www.nature.com/articles/nmeth0511-365&#34; target=&#34;_blank&#34;&gt;B. Wong, &amp;ldquo;The overview figure&amp;rdquo;, &lt;em&gt;Nature Methods&lt;/em&gt;, 8:365, 2011.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[10] &lt;a href=&#34;https://www.edwardtufte.com/tufte/books_vdqi&#34; target=&#34;_blank&#34;&gt;E. Tufte, &lt;em&gt;The Visual Display of Quantitative Information&lt;/em&gt;, 2nd edition, Graphics Press, 2001.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[11] &lt;a href=&#34;https://www.nature.com/articles/nmeth0311-189&#34; target=&#34;_blank&#34;&gt;B., Wang, Points of review (part 2), &lt;em&gt;Nature Methods&lt;/em&gt;, 8:189, 2011.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Post</title>
+      <link>https://inespereira.com/post/</link>
+      <pubDate>Fri, 07 Feb 2020 11:10:12 +0700</pubDate>
+      
+      <guid>https://inespereira.com/post/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>A beginner&#39;s guide to ETH&#39;s Euler</title>

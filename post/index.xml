@@ -6,10 +6,30 @@
     <description>Recent content in Posts on Purkinje Delirium</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 03 Jul 2019 15:21:13 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 07 Feb 2020 11:12:09 +0700</lastBuildDate>
     
 	<atom:link href="https://inespereira.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Data Visualization</title>
+      <link>https://inespereira.com/post/data-visualization/</link>
+      <pubDate>Fri, 07 Feb 2020 11:12:09 +0700</pubDate>
+      
+      <guid>https://inespereira.com/post/data-visualization/</guid>
+      <description>Scientists are expected to be effective communicators, but that can be a little tricky without a few conscious tricks up your sleeve.
+Visualization, in particular, can be a very powerful means of conveying information, be it in your papers, posters, presentations, chapters, or blogposts.
+🖍 Nota bene: In this post, I summarize a few recommendations from various sources that I, personally, found very useful. For a more in-depth take on the following and other points, do consult the series of Points of View columns published in Nature Methods.</description>
+    </item>
+    
+    <item>
+      <title>Post</title>
+      <link>https://inespereira.com/post/</link>
+      <pubDate>Fri, 07 Feb 2020 11:10:12 +0700</pubDate>
+      
+      <guid>https://inespereira.com/post/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>A beginner&#39;s guide to ETH&#39;s Euler</title>
