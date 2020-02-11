@@ -328,7 +328,7 @@ Visualization, in particular, can be a very powerful means of conveying informat
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    5 min read
+    6 min read
   </span>
   
 
@@ -445,7 +445,7 @@ Visualization, in particular, can be a very powerful means of conveying informat
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    5 min read
+    6 min read
   </span>
   
 
@@ -544,9 +544,20 @@ Another great online read can be found <a href="https://www.knowablemagazine.org
 are meant to be general and that one should always take into account any
 field-specific conventions.</p>
 
+<p>Let&rsquo;s start with a motivating example. Look at the pie chart below and identify
+aspects that you think need improvement.</p>
+
+<p><img title="" src="motivating-pie.png"/>
+<div style="text-align: center">Figure 1: Motivating example. The dataset can be
+found <a href="https://www.kaggle.com/residentmario/ramen-ratings" target="_blank">here</a>.</div></p>
+
+<p>Ok, now that you have a few ideas of your own, let&rsquo;s go through some data
+visualization principles. In the end of this post, I have attached a proposed
+improvement to Figure 1.</p>
+
 <h2 id="color">Color</h2>
 
-<p>There are a few things to know about color.</p>
+<p>There are a few things to note about color.</p>
 
 <p>First, color varies in terms of:</p>
 
@@ -557,10 +568,10 @@ little or no white is said to be very saturated.</em>&rdquo; [1]</li>
 <li>Lightness: which &ldquo;<em>tells us about its relative ordering on the dark-to-light scale.</em>&rdquo; [1]</li>
 </ul>
 
-<p>Figure 1 shows a way to represent these dimensions:</p>
+<p>Figure 2 shows a way to represent these dimensions:</p>
 
 <p><img title="" src="color-on-mac.png"/>
-<div style="text-align: center">Figure 1: Picking colors.</div></p>
+<div style="text-align: center">Figure 2: Picking colors.</div></p>
 
 <!-- If you use these dimensions to represent color, then you end up with a three dimensional
 object; for instance, a sphere: -->
@@ -572,10 +583,12 @@ object; for instance, a sphere: -->
 That way, if someone prints your figure in black and white, they still get the message 😊.
 One way to do this is to spiral around the color wheel while varying lightness as well.
 This only works effectively for a limited number of colors: around 6 to 8 [1].
-Past 8, it just becomes harder to find discernible colors.</p>
+Past 8, it just becomes harder to find discernible colors (as is the case in
+our motivating example).</p>
 
-<p>As for representing data, color is ill-suited to represent <strong>quantitative data</strong>, because it is not in principle
-clear how to order different colors. It is, however, appropriate to characterize <strong>categorical</strong> data.</p>
+<p>What is more, color is ill-suited to represent
+<strong>quantitative data</strong>, because it is not in principle clear how to order
+different colors. It is, however, appropriate to characterize <strong>categorical</strong> data.</p>
 
 <p>While color might make a figure seem nicer, it should be used judiciously.
 Indeed, there are better strategies to compare elements, and these were ranked by
@@ -632,7 +645,8 @@ Cleveland and McGill [2]:</p>
 </tbody>
 </table>
 
-<p>This made me realize that bar charts are a very effective tool for comparison!</p>
+<p>What this tells us is that bar charts, for example, are a very effective tool
+for comparison.</p>
 
 <h2 id="a-word-on-color-blindness">A word on color blindness</h2>
 
@@ -700,15 +714,18 @@ Bang Wong, optimized for color-blind individuals [3]:</p>
 </tbody>
 </table>
 
+<p>Some software libraries also offer optimized palettes, so be sure to check out
+their documentation.</p>
+
 <h2 id="salience">Salience</h2>
 
-<p>Now that we&rsquo;ve reviewed a few tricks of how to effectively compare elements, let&rsquo;s
+<p>Now that we&rsquo;ve reviewed a few tricks to more effectively compare elements, let&rsquo;s
 see how to create contrast, <em>i.e.</em> visually separate one part of an image from the rest.
 Salience, the visual quality of an object that makes it more prominent, can be
-achieved in several ways [1]:</p>
+achieved in several ways [4]:</p>
 
 <p><img title="" src="salience.png"/>
-<div style="text-align: center">Figure 2: Achieving salience.</div></p>
+<div style="text-align: center">Figure 3: Achieving salience.</div></p>
 
 <p>A few notes on this:</p>
 
@@ -721,8 +738,8 @@ emphasize one thing at a time.</li>
 <h2 id="gestalt-principles">Gestalt principles</h2>
 
 <p>The Gestalt principles of perception are a set of principles which attempt
-to explain why humans naturally perceive objects as being organized or grouped [5].
-There are several principles [4-5]:</p>
+to explain why humans naturally perceive objects as being organized or grouped [6].
+There are several principles [5-6]:</p>
 
 <table>
 <thead>
@@ -761,41 +778,59 @@ or table!</p>
 <h2 id="layout">Layout</h2>
 
 <p>A layout has both an aesthetic and clarifying purpose. A simple way to organize your
-slides/posters is to follow the &ldquo;rule of thirds&rdquo; [6].</p>
+slides/posters is to follow the &ldquo;rule of thirds&rdquo; [7].</p>
 
 <p><img title="" src="powerpoints.png"/>
-<div style="text-align: center">Figure 3: Power points.</div></p>
+<div style="text-align: center">Figure 4: Power points.</div></p>
 
 <p>Basically, you can start by dividing the page into 9 equal parts. Objects placed
 along the lines and especially at their intersection points (the so-called power
 points) become more prominent. You can use this to guide the observer.</p>
 
-<h2 id="other">Other</h2>
+<h2 id="other-remarks">Other remarks</h2>
 
 <p>The above principles should already help a fair amount, but here are few other
 tips:</p>
 
 <ul>
 <li>Negative space (or whitespace): use it to structure your visualization and
-to let it breathe (no one likes crammed posters&hellip;). For more on this, see [7].</li>
+to let it breathe (no one likes crammed posters&hellip;). For more on this, see [8].</li>
 <li>Typography: favor sans serif fonts for slides and serif fonts for greater
-lengths of text (<em>e.g.</em> posters, papers) [8].</li>
+lengths of text (<em>e.g.</em> posters, papers) [9].</li>
 <li>Overview figures: these can be very helpful! However, keep them simple and
-avoid entering graphs or results at this point [9].</li>
+avoid entering graphs or results at this point [10].</li>
 <li>🧨 Pie charts: while pie charts can be useful in describing parts of a whole
 and are standard practise in some fields, they have been criticized. Edward Tufte
-once wrote <em>&ldquo;the only design worse than a pie chart is several of them&rdquo;</em> [10]. To
+once wrote <em>&ldquo;the only design worse than a pie chart is several of them&rdquo;</em> [11]. To
 compare elements, pie charts rely on differences in area or angle, and we have
 previously seen that there are more effective means of comparison. Hence,
 a bar chart can often be a more effective alternative.
 If you do opt for a pie chart, you might want to know that a specific ordering of
 slices is sometimes recommended. Specifically, Bang Wong writes: <em>&ldquo;place the largest
 wedge to the right of 12 o’clock, the second largest to the left of 12 o’clock
-and the remainder counter-clockwise descending in size&rdquo;</em> [11]. Graphically:</li>
+and the remainder counter-clockwise descending in size&rdquo;</em> [12]. Graphically:</li>
 </ul>
 
 <p><img title="" src="pie-chart.png"/>
-<div style="text-align: center">Figure 4: Organizing a pie chart.</div></p>
+<div style="text-align: center">Figure 5: Organizing a pie chart.</div></p>
+
+<h2 id="remember-the-motivating-example">Remember the motivating example?</h2>
+
+<p>All in all, if we go back to Figure 1, it is clear that:</p>
+
+<ul>
+<li>It is not clear what is being plotted.</li>
+<li>The choice of graph can be disputed.</li>
+<li>There are too many categories.</li>
+<li>There are too many colors.</li>
+</ul>
+
+<p>Let&rsquo;s try using a bar chart and creating an &lsquo;Other&rsquo; category for countries that
+produce less than twenty 5-star varieties of ramen. The new graph looks
+simpler, right?</p>
+
+<p><img title="" src="corrected-graph.png"/>
+<div style="text-align: center">Figure 6: Proposed improvement.</div></p>
 
 <h2 id="references">References</h2>
 
@@ -806,21 +841,23 @@ for Analyzing Scientific Data&rdquo;, <em>Science</em>, 229(4716), 1985.</a></p>
 
 <p>[3] <a href="https://www.nature.com/articles/nmeth.1618" target="_blank">B. Wong, &ldquo;Color blindness&rdquo;, <em>Nature Methods</em>, 8:441, 2011.</a></p>
 
-<p>[4] <a href="https://www.nature.com/articles/nmeth1110-863" target="_blank">B. Wong, &ldquo;Gestalt principles (part 1)&rdquo;, <em>Nature Methods</em>, 7:863, 2010.</a></p>
+<p>[4] <a href="https://www.nature.com/articles/nmeth1010-773" target="_blank">B. Wong, &ldquo;Salience&rdquo;, <em>Nature Methods</em>, 7:773, 2010.</a></p>
 
-<p>[5] <a href="https://en.wikipedia.org/wiki/Principles_of_grouping" target="_blank">Principles of grouping, Wikipedia, [accessed on 10.02.2020]</a></p>
+<p>[5] <a href="https://www.nature.com/articles/nmeth1110-863" target="_blank">B. Wong, &ldquo;Gestalt principles (part 1)&rdquo;, <em>Nature Methods</em>, 7:863, 2010.</a></p>
 
-<p>[6] <a href="https://www.nature.com/articles/nmeth.1711" target="_blank">B. Wong, &ldquo;Layout&rdquo;, <em>Nature Methods</em>, 8:783, 2011.</a></p>
+<p>[6] <a href="https://en.wikipedia.org/wiki/Principles_of_grouping" target="_blank">Principles of grouping, Wikipedia, [accessed on 10.02.2020]</a></p>
 
-<p>[7] <a href="https://www.nature.com/articles/nmeth0111-5" target="_blank">B. Wong, &ldquo;Negative Space&rdquo;, <em>Nature Methods</em>, 8:5, 2011.</a></p>
+<p>[7] <a href="https://www.nature.com/articles/nmeth.1711" target="_blank">B. Wong, &ldquo;Layout&rdquo;, <em>Nature Methods</em>, 8:783, 2011.</a></p>
 
-<p>[8] <a href="https://www.nature.com/articles/nmeth0411-277" target="_blank">B. Wong, &ldquo;Typography&rdquo;, <em>Nature Methods</em>, 8:277, 2011.</a></p>
+<p>[8] <a href="https://www.nature.com/articles/nmeth0111-5" target="_blank">B. Wong, &ldquo;Negative Space&rdquo;, <em>Nature Methods</em>, 8:5, 2011.</a></p>
 
-<p>[9] <a href="https://www.nature.com/articles/nmeth0511-365" target="_blank">B. Wong, &ldquo;The overview figure&rdquo;, <em>Nature Methods</em>, 8:365, 2011.</a></p>
+<p>[9] <a href="https://www.nature.com/articles/nmeth0411-277" target="_blank">B. Wong, &ldquo;Typography&rdquo;, <em>Nature Methods</em>, 8:277, 2011.</a></p>
 
-<p>[10] <a href="https://www.edwardtufte.com/tufte/books_vdqi" target="_blank">E. Tufte, <em>The Visual Display of Quantitative Information</em>, 2nd edition, Graphics Press, 2001.</a></p>
+<p>[10] <a href="https://www.nature.com/articles/nmeth0511-365" target="_blank">B. Wong, &ldquo;The overview figure&rdquo;, <em>Nature Methods</em>, 8:365, 2011.</a></p>
 
-<p>[11] <a href="https://www.nature.com/articles/nmeth0311-189" target="_blank">B. Wang, Points of review (part 2), <em>Nature Methods</em>, 8:189, 2011.</a></p>
+<p>[11] <a href="https://www.edwardtufte.com/tufte/books_vdqi" target="_blank">E. Tufte, <em>The Visual Display of Quantitative Information</em>, 2nd edition, Graphics Press, 2001.</a></p>
+
+<p>[12] <a href="https://www.nature.com/articles/nmeth0311-189" target="_blank">B. Wang, Points of review (part 2), <em>Nature Methods</em>, 8:189, 2011.</a></p>
 
     </div>
 
