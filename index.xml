@@ -562,7 +562,7 @@ To submit your job, you then type:&lt;/p&gt;
 &lt;p&gt;⚠️ &lt;strong&gt;#MatlabProTip&lt;/strong&gt;: the &lt;code&gt;-r&lt;/code&gt; option must be followed by a function.
 That means that you should omit the &lt;code&gt;.m&lt;/code&gt; at the end of your script name.
 This can be confusing or easily overlooked if your function doesn&amp;rsquo;t take in any arguments
-(as in the example above), and has once cost me an embarrassing amount of time&lt;/p&gt;
+(as in the example above), and has once cost me an embarrassing amount of time.&lt;/p&gt;
 
 &lt;p&gt;⚠️⚠️ &lt;strong&gt;#Update&lt;/strong&gt;: the &lt;code&gt;-r&lt;/code&gt; option is deprecated in Matlab 2019a and newer versions.
 Instead, the &lt;code&gt;-batch&lt;/code&gt; option should be used. For more on this, check out &lt;a href=&#34;https://ch.mathworks.com/help/matlab/ref/matlablinux.html&#34; target=&#34;_blank&#34;&gt;this link&lt;/a&gt;.&lt;/p&gt;
