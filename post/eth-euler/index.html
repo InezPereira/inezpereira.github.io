@@ -345,7 +345,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    10 min read
+    11 min read
   </span>
   
 
@@ -483,7 +483,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    10 min read
+    11 min read
   </span>
   
 
@@ -605,7 +605,7 @@ especially if you are not used to working with a terminal and all that jazz.</p>
 
 <p>The first thing you need to do is to connect to Euler.
 To do that, you either need to be within the ETH network or connected via VPN.
-The only requirement to login is a valid NETHZ account (no forms to fill out 🎉).
+The only requirement to login is a valid ETH account (no forms to fill out 🎉).
 Open a terminal and type:</p>
 
 <pre><code class="language-bash">ssh username@euler.ethz.ch
@@ -765,8 +765,13 @@ To submit your job, you then type:</p>
 <li><code>-nodisplay</code>: just explicitly tell MATLAB no graphical display is available.</li>
 </ul>
 
-<p>⚠️ <strong>#ProTip</strong>: no <code>.m</code> at the end of your script name (bsub doesn’t require that you pass the file extension).
-That has once cost me an embarrassing amount of time.</p>
+<p>⚠️ <strong>#MatlabProTip</strong>: the <code>-r</code> option must be followed by a function.
+That means that you should omit the <code>.m</code> at the end of your script name.
+This can be confusing or easily overlooked if your function doesn&rsquo;t take in any arguments
+(as in the example above), and has once cost me an embarrassing amount of time</p>
+
+<p>⚠️⚠️ <strong>#Update</strong>: the <code>-r</code> option is deprecated in Matlab 2019a and newer versions.
+Instead, the <code>-batch</code> option should be used. For more on this, check out <a href="https://ch.mathworks.com/help/matlab/ref/matlablinux.html" target="_blank">this link</a>.</p>
 
 <p>You have submitted your job and get back:</p>
 
