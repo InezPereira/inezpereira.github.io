@@ -678,7 +678,7 @@ bsub -w &amp;quot;$dep_cond&amp;quot; matlab -singleCompThread -nodisplay -r &am
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;A huge thank you to the Euler cluster support for this one! In particular to
-&lt;a href=&#34;https://ethz.ch/services/en/organisation/departments/it-services/people/person-detail.html?persid=88087&#34; target=&#34;_blank&#34;&gt;Oliver Byrde&lt;/a&gt;!&lt;/p&gt;
+&lt;a href=&#34;https://ethz.ch/services/en/organisation/departments/it-services/people/person-detail.html?persid=88087&#34; target=&#34;_blank&#34;&gt;Olivier Byrde&lt;/a&gt;!&lt;/p&gt;
 
 &lt;h2 id=&#34;a-modest-template&#34;&gt;A modest template&lt;/h2&gt;
 
