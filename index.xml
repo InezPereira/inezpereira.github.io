@@ -371,7 +371,7 @@ to structure your job submission scripts.&lt;/p&gt;
 
 &lt;h2 id=&#34;euler&#34;&gt;Euler ?&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://scicomp.ethz.ch/w/images/a/ad/Getting_started_with_Euler_(September_2016).pdf&#34; target=&#34;_blank&#34;&gt;Euler&lt;/a&gt;
+&lt;p&gt;&lt;a href=&#34;https://scicomp.ethz.ch/w/images/b/be/Getting_started_with_Euler_%28February_2020%29.pdf&#34; target=&#34;_blank&#34;&gt;Euler&lt;/a&gt;
 is the high performance computing cluster at ETH Zurich.
 &lt;!-- Its name stands for *Erweiterbarer, Umweltfreundlicher, Leistungsfähiger ETH Rechner*. --&gt;
 Like its predecessors, Euler follows a shareholder model, and is for the most part financed by its users.
@@ -475,7 +475,7 @@ quota in scratch rises to 2.5 TB and a maximum of 1 000 000 files.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;For more information on data storage (&lt;em&gt;e.g.&lt;/em&gt; options for shareholders), be sure
-to check out this &lt;a href=&#34;https://scicomp.ethz.ch/w/images/a/ad/Getting_started_with_Euler_(September_2016).pdf&#34; target=&#34;_blank&#34;&gt;presentation&lt;/a&gt;
+to check out this &lt;a href=&#34;https://scicomp.ethz.ch/w/images/b/be/Getting_started_with_Euler_%28February_2020%29.pdf&#34; target=&#34;_blank&#34;&gt;presentation&lt;/a&gt;
 or this &lt;a href=&#34;https://scicomp.ethz.ch/wiki/Storage_systems&#34; target=&#34;_blank&#34;&gt;page&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&#34;using-euler&#34;&gt;Using Euler&lt;/h3&gt;
