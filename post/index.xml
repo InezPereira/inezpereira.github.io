@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Purkinje Delirium</title>
@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Purkinje Delirium</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Feb 2020 11:12:09 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2020 14:53:21 +0200</lastBuildDate>
     
 	<atom:link href="https://inespereira.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tools for Online Events</title>
+      <link>https://inespereira.com/post/tools-for-online-events/</link>
+      <pubDate>Sun, 13 Sep 2020 14:53:21 +0200</pubDate>
+      
+      <guid>https://inespereira.com/post/tools-for-online-events/</guid>
+      <description>When the corona crises started we decided to go online with our @CompPsychiatry course and make it free of charge. The result was a course that ended up being 4x bigger than usual (&amp;gt;1000 participants) and more inclusive than ever. Thanks to everyone who helped pull this off!!! pic.twitter.com/ybi8QrgI19
+&amp;mdash; Frederike Petzschner (@rikepetzschner) September 11, 2020  This year&amp;rsquo;s Computational Psychiatry Course (CPC) Zurich, like many other events all over the world, faced the challenge of moving to an online setting.</description>
+    </item>
     
     <item>
       <title>Data Visualization</title>
@@ -28,7 +38,8 @@ Visualization, in particular, can be a very powerful means of conveying informat
       <pubDate>Wed, 03 Jul 2019 15:21:13 +0200</pubDate>
       
       <guid>https://inespereira.com/post/eth-euler/</guid>
-      <description>🖍 Nota bene: You will need to be an ETH member to use Euler. However, this post might still be useful if you happen to be working on another cluster which uses the LSF batch system. Also relevant: I am currently mainly using MATLAB to run my simulations, so you&amp;rsquo;ll find some MATLAB specific advice. For Python specifics, check out this page. ⌛️ TL;DR: check out the end of the blog post for a practical suggestion on how to structure your job submission scripts.</description>
+      <description>🖍 Nota bene: You will need to be an ETH member to use Euler. However, this post might still be useful if you happen to be working on another cluster which uses the LSF batch system. Also relevant: I am currently mainly using MATLAB to run my simulations, so you&amp;rsquo;ll find some MATLAB specific advice. For Python specifics, check out this page.
+⌛️ TL;DR: check out the end of the blog post for a practical suggestion on how to structure your job submission scripts.</description>
     </item>
     
     <item>
@@ -49,49 +60,33 @@ I started using FreeSurfer and Freeview last year and, albeit the documentation 
       <guid>https://inespereira.com/post/the-art-of-foot-tickling/</guid>
       <description>&lt;p style=&#34;text-align: justify;&#34;&gt;One can sometimes feel very puzzled when watching a physician perform the neurological examination. I mean, what information is there to extract from a retracting big toe, from feet constantly a bit more apart from each other than they should be or even from an absent tendon reflex? How were these signs observed in the first place and how did we come to know how to interpret them?&lt;/p&gt;
 &lt;p style=&#34;text-align: justify;&#34;&gt;Let us focus, for example, on reflexes. A reflex is an involuntary movement in response to a stimulus. Reflexes in general represent a key part of the neurological examination because of their more objective nature and lesser dependency on patient cooperation. Actually, reflexes and their characteristics are crucial: in conjunction with other signs and symptoms and knowledge of the anatomy of the nervous system, the observer can localize the neurological lesion(s) with a surprising degree of precision... before even resorting to CT or MRI imaging!&lt;/p&gt;
-
-&lt;h2 id=&#34;damme-there-are-no-pores-william-harvey&#34;&gt;&lt;em&gt;Damme there are no pores&lt;/em&gt; (William Harvey)&lt;/h2&gt;
-
+&lt;h2 id=&#34;_damme-there-are-no-pores_-william-harvey&#34;&gt;&lt;em&gt;Damme there are no pores&lt;/em&gt; (William Harvey)&lt;/h2&gt;
 &lt;p style=&#34;text-align: justify;&#34;&gt;The first description of a reflex action was presumably provided by René Descartes (1596-1650) in his book &lt;i&gt;De homine &lt;/i&gt;(1662). Here, he describes an experiment in which a mock blow aimed at a person’s eyes would lead to prompt eye closure. He conjectured that this response was due to the so-called “animal spirits” that would travel throughout the body within a hollow nerve tube. Vision, or the sight of the approaching object, was considered a reflection of the animal spirits back to the brain and this is presumed to be where we get the concept of “reflex”: simply the abbreviation of “reflection”. Another example Descartes depicts in his posthumous book is that of a child drawing his (or her...) foot away from a fire. In a very detailed and somewhat oddly mechanistic explanation, Descartes explains how the particles of the fire move the skin of the foot, thereby pulling a string attached on the other end to the pineal gland. This pulling movement opens a pore, thus releasing the animal spirits, that are now free to travel the body to cause the defensive muscle action of retreating the child’s foot from danger.&lt;/p&gt;
 &lt;p style=&#34;text-align: justify;&#34;&gt;As bizarre as this pore-based explanation might nowadays sound, Descartes is actually describing the five components of what we call “the reflex arc” (Figure 1). To build up a reflex arc, we need:&lt;/p&gt;
-
 &lt;ol&gt;
-    &lt;li&gt;Receptors, able to detect a signal (for example: pain);&lt;/li&gt;
-    &lt;li&gt;A so-called (sensory) “afferent arm”, that carries the transformed signal to…&lt;/li&gt;
-    &lt;li&gt;… an integrating center, which, when stimulated, activates…&lt;/li&gt;
-    &lt;li&gt;… the (motor) efferent (with an “e”) arm, whose function is to transmit the signal to…&lt;/li&gt;
-    &lt;li&gt;… the effector muscle, which will then carry out the involuntary action.&lt;/li&gt;
+	&lt;li&gt;Receptors, able to detect a signal (for example: pain);&lt;/li&gt;
+	&lt;li&gt;A so-called (sensory) “afferent arm”, that carries the transformed signal to…&lt;/li&gt;
+	&lt;li&gt;… an integrating center, which, when stimulated, activates…&lt;/li&gt;
+	&lt;li&gt;… the (motor) efferent (with an “e”) arm, whose function is to transmit the signal to…&lt;/li&gt;
+	&lt;li&gt;… the effector muscle, which will then carry out the involuntary action.&lt;/li&gt;
 &lt;/ol&gt;
-
 &lt;p&gt;&lt;img class=&#34;alignnone size-full wp-image-237&#34; src=&#34;https://inezpereira.files.wordpress.com/2017/11/null1.png&#34; alt=&#34;Figure 1: A reflex arc.&#34; width=&#34;594&#34; height=&#34;375&#34; /&gt;&lt;/p&gt;
-
 &lt;div style=&#34;text-align: center&#34;&gt;Figure 1: A reflex arc.&lt;br /&gt;The relay neuron depicts the integrating center of the reflex arc.&lt;/div&gt;
-
 &lt;p style=&#34;text-align: justify;&#34;&gt;It took almost another century and a half for Galvani (1737-1798) to demonstrate, in an anonymous pamphlet, that the animal spirits were actually plain electricity. This caused a reorganization of thinking about how to approach the nervous system: it became more grounded in experiment, but a systematic and organized examination was still lacking. In fact, only until the late 1800s did the generation of Erb, Babinski and Gowers (among others) develop the neurological examination as we know it today.&lt;/p&gt;
-
 &lt;h2 id=&#34;types-of-reflexes&#34;&gt;Types of reflexes&lt;/h2&gt;
-
 &lt;p style=&#34;text-align: justify;&#34;&gt;The most commonly encountered reflexes are the myotatic (tendon) and cutaneous types. Most people are familiar with tendon reflexes (&lt;i&gt;vide&lt;/i&gt; the classic&lt;a href=&#34;https://www.youtube.com/watch?v=it06ffkfll8&#34;&gt; Veet wax strips commercial&lt;/a&gt;), but rubbing the skin also elicits superficial reflexes. A classic superficial reflex is the plantar reflex, whereby the sole of the foot is stimzulated with a blunt instrument. The reflex can take one of two forms. In healthy adults, the plantar reflex causes &lt;b&gt;flexion &lt;/b&gt;of the hallux (&lt;i&gt;aka&lt;/i&gt; “big toe”). An &lt;b&gt;extension &lt;/b&gt;of the hallux, however, is known as the Babinski response or Babinski sign (Figure 2).&lt;/p&gt;
-
-&lt;p&gt;&lt;img title=&#34;&#34; src=&#34;https://inezpereira.files.wordpress.com/2017/11/null2.png&#34; alt=&#34;&#34; width=&#34;406&#34; height=&#34;357&#34; /&gt;
-&lt;div style=&#34;text-align: center&#34;&gt;Figure 2: The plantar reflex.&lt;/div&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;img title=&#34;&#34; src=&#34;https://inezpereira.files.wordpress.com/2017/11/null2.png&#34; alt=&#34;&#34; width=&#34;406&#34; height=&#34;357&#34; /&gt;&lt;/p&gt;
+&lt;div style=&#34;text-align: center&#34;&gt;Figure 2: The plantar reflex.&lt;/div&gt;
 &lt;p style=&#34;text-align: justify;&#34;&gt;This response exists as a normal primitive reflex in infants, but indicates lesion to the motor pathway in adults. More specifically, a Babinski response in adults points to a lesion in the first part of the motor pathway (Figure 3), where the upper (or first) motor neuron (of a total of two) lies.&lt;/p&gt;
-
-&lt;p&gt;&lt;img title=&#34;&#34; src=&#34;https://inezpereira.files.wordpress.com/2017/11/image.png&#34; alt=&#34;&#34; width=&#34;358&#34; height=&#34;788&#34; /&gt;
-&lt;div style=&#34;text-align: center&#34;&gt;Figure 3: The motor pathway, also called pyramidal tract. Notice that the first motor neuron (depicted in yellow) extends from the cerebral cortex to the anterior horn of the spinal medulla. A lesion at any point along its long path (due to stroke, for instance) can produce the Babinski response.&lt;/div&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;img title=&#34;&#34; src=&#34;https://inezpereira.files.wordpress.com/2017/11/image.png&#34; alt=&#34;&#34; width=&#34;358&#34; height=&#34;788&#34; /&gt;&lt;/p&gt;
+&lt;div style=&#34;text-align: center&#34;&gt;Figure 3: The motor pathway, also called pyramidal tract. Notice that the first motor neuron (depicted in yellow) extends from the cerebral cortex to the anterior horn of the spinal medulla. A lesion at any point along its long path (due to stroke, for instance) can produce the Babinski response.&lt;/div&gt;
 &lt;p style=&#34;text-align: justify;&#34;&gt;The Babinski extensor toe response was described by Joseph Félix Babinski to the &lt;i&gt;Société de Biologie de Paris &lt;/i&gt;on February 22nd 1896. Babinski belonged to the generation that followed the legendary Jean-Marie Charcot. Charcot, a famous neurologist and professor of anatomical-pathology, became known for his &lt;i&gt;méthode anatomo-clinique&lt;/i&gt;, &lt;i&gt;i.e.&lt;/i&gt; careful and systematic correlations between clinical signs and neuropathological lesions. In using this strategy, Charcot succeeded, for instance, in distinguishing the different signs of Parkinson’s disease. He did not, however, rely much on the physical examination, and it is said that he rarely touched his patients. Babinski met Charcot in a medical competition, where he ended up being awarded a post in the latter’s service. Babinski hence arrived at the famous Hôpital de Salpêtrière in 1885, at the height of Charcot’s career. After his mentor’s death, Babinski, for political or nonpolitical reasons, distanced himself from Charcot in that he advocated the superior importance of the neurological examination in establishing a clinical diagnosis.&lt;/p&gt;
 &lt;p style=&#34;text-align: justify;&#34;&gt;But, as I was saying, on February 22nd 1896, two and a half years after Charcot passed away, Babinski presented his “new” (more on these quotation marks later) sign to a lively crowd of physicians, physiologists, basic scientists and the like. At first, he described the sign as a response to painful stimuli but, in a subsequent communication, added that simply stroking or tickling the sole of the foot could also elicit this same reaction. He further correlated this reflex with a lesion in the pyramidal tract (remember Figure 3) and later included the fanning movement of the other toes in his description (for some wonderful french wordplay: &lt;a href=&#34;http://www.biusante.parisdescartes.fr/images/banque/zoom/anmpx48x0004bis.jpg&#34;&gt;Babinski in the early 20th century press.&lt;/a&gt;).&lt;/p&gt;
 &lt;p style=&#34;text-align: justify;&#34;&gt;Interestingly, he also focused on hysteria (a now obsolete diagnosis with a very interesting story to tell), just enough to demonstrate that the presence of the extensor response effectively excludes it. Indeed, although not the first to observe the extensor toe response in pyramidal tract lesions, Babinski is credited for its appropriate interpretation. As a matter of fact, medieval, Renaissance and baroque painters had already correctly represented the extensor toe response in infants.&lt;/p&gt;
-
-&lt;p&gt;&lt;img title=&#34;&#34; src=&#34;https://inezpereira.files.wordpress.com/2017/11/null3.png&#34; alt=&#34;&#34; width=&#34;438&#34; height=&#34;598&#34; /&gt;
-&lt;div style=&#34;text-align: center&#34;&gt;Figure 4: &lt;i&gt;The Small Cowper Madonna&lt;/i&gt;, Raphael, circa 1505.&lt;br /&gt;Can you spot the celestial extensor toe?&lt;/div&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;img title=&#34;&#34; src=&#34;https://inezpereira.files.wordpress.com/2017/11/null3.png&#34; alt=&#34;&#34; width=&#34;438&#34; height=&#34;598&#34; /&gt;&lt;/p&gt;
+&lt;div style=&#34;text-align: center&#34;&gt;Figure 4: &lt;i&gt;The Small Cowper Madonna&lt;/i&gt;, Raphael, circa 1505.&lt;br /&gt;Can you spot the celestial extensor toe?&lt;/div&gt;
 &lt;p style=&#34;text-align: justify;&#34;&gt;After Babinski’s first description, a great number of publications with&lt;a href=&#34;https://www.ncbi.nlm.nih.gov/books/NBK397/table/A2413/?report=objectonly&#34;&gt; modified methods to elicit the same extensor response&lt;/a&gt; emerged. Among them were Oppenheim (1858–1919), who proposed to stimulate the tibial surface in a downward movement and Gordon (1874 – 1953), who would squeeze the calf muscles of his patients.&lt;/p&gt;
-
-&lt;h2 id=&#34;that-s-interesting-but-what-should-i-take-home&#34;&gt;That’s interesting, but what should I take home?&lt;/h2&gt;
-
+&lt;h2 id=&#34;thats-interesting-but-what-should-i-take-home&#34;&gt;That’s interesting, but what should I take home?&lt;/h2&gt;
 &lt;p style=&#34;text-align: justify;&#34;&gt;Aside from being instilled with a few more drops of neurophilia, I hope you now better understand how amazing reflexes actually are. Take a look again at their organized base-structure. Notice that the arc in Figure 1 does not involve the brain’s outer cortex, and this is true for other non-spinal reflexes. Hence, reflexes are often useful as a way to generate rapid action without the need to involve consciousness. Reflexes are the reason why you “automatically” remove your hand from a burning pan, why your pupils fastly constrict when exposed to more light, why you salivate when you set your eyes on that oh-so-tasty moussaka.&lt;/p&gt;
 &lt;p style=&#34;text-align: justify;&#34;&gt;If anything, you are now able to understand some &lt;a href=&#34;https://itunes.apple.com/us/album/table-for-one/id1292944953&#34;&gt;very nerdy references&lt;/a&gt;. Until next time!&lt;/p&gt;</description>
     </item>

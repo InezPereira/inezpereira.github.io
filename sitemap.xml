@@ -1,5 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+    <url>
+    
+      <loc>https://inespereira.com/post/</loc>
+      <lastmod>2020-09-13T14:53:21+02:00</lastmod>
+    </url>
+  
+    <url>
+    
+      <loc>https://inespereira.com/</loc>
+      <lastmod>2020-09-13T14:53:21+02:00</lastmod>
+    </url>
+  
+    <url>
+    
+      <loc>https://inespereira.com/post/tools-for-online-events/</loc>
+      <lastmod>2020-09-13T14:53:21+02:00</lastmod>
+    </url>
   
     <url>
     
@@ -15,14 +32,52 @@
   
     <url>
     
+      <loc>https://inespereira.com/authors/</loc>
+      <lastmod>2019-07-03T15:21:13+02:00</lastmod>
+    </url>
+  
+    <url>
+    
+      <loc>https://inespereira.com/authors/in%C3%AAs-pereira/</loc>
+      <lastmod>2019-07-03T15:21:13+02:00</lastmod>
+    </url>
+  
+    <url>
+    
       <loc>https://inespereira.com/post/freeview/</loc>
       <lastmod>2019-03-31T11:17:49+02:00</lastmod>
     </url>
   
     <url>
     
+<<<<<<< HEAD
+      <loc>https://inespereira.com/post/</loc>
+      <lastmod>2020-02-07T11:12:09+07:00</lastmod>
+=======
       <loc>https://inespereira.com/post/the-art-of-foot-tickling/</loc>
       <lastmod>2018-04-03T20:12:34+02:00</lastmod>
+>>>>>>> my-temporary-work
+    </url>
+  
+    <url>
+    
+      <loc>https://inespereira.com/authors/admin/</loc>
+    </url>
+  
+    <url>
+    
+      <loc>https://inespereira.com/author/</loc>
+    </url>
+  
+    <url>
+    
+<<<<<<< HEAD
+      <loc>https://inespereira.com/</loc>
+      <lastmod>2020-02-07T11:12:09+07:00</lastmod>
+      <priority>0</priority>
+=======
+      <loc>https://inespereira.com/categories/</loc>
+>>>>>>> my-temporary-work
     </url>
   
     <url>
@@ -32,51 +87,12 @@
   
     <url>
     
-      <loc>https://inespereira.com/author/</loc>
-      <priority>0</priority>
-    </url>
-  
-    <url>
-    
-      <loc>https://inespereira.com/authors/</loc>
-      <priority>0</priority>
-    </url>
-  
-    <url>
-    
-      <loc>https://inespereira.com/categories/</loc>
-      <priority>0</priority>
-    </url>
-  
-    <url>
-    
-      <loc>https://inespereira.com/authors/in%C3%AAs-pereira/</loc>
-      <lastmod>2019-07-03T15:21:13+02:00</lastmod>
-      <priority>0</priority>
-    </url>
-  
-    <url>
-    
-      <loc>https://inespereira.com/post/</loc>
-      <lastmod>2020-02-07T11:12:09+07:00</lastmod>
-    </url>
-  
-    <url>
-    
       <loc>https://inespereira.com/publication_types/</loc>
-      <priority>0</priority>
     </url>
   
     <url>
     
       <loc>https://inespereira.com/publication/</loc>
-    </url>
-  
-    <url>
-    
-      <loc>https://inespereira.com/</loc>
-      <lastmod>2020-02-07T11:12:09+07:00</lastmod>
-      <priority>0</priority>
     </url>
   
     <url>
@@ -87,13 +103,6 @@
     <url>
     
       <loc>https://inespereira.com/tags/</loc>
-      <priority>0</priority>
-    </url>
-  
-    <url>
-    
-      <loc>https://inespereira.com/authors/admin/</loc>
-      <priority>0</priority>
     </url>
   
 </urlset>
