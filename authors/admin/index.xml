@@ -5,11 +5,7 @@
     <link>https://inespereira.com/authors/admin/</link>
     <description>Recent content in admin on Inês Pereira</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    
-	<atom:link href="https://inespereira.com/authors/admin/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-us</language><atom:link href="https://inespereira.com/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Inês Pereira</title>
       <link>https://inespereira.com/author/admin/</link>
